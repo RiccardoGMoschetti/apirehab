@@ -23,7 +23,6 @@ Typical APIs will hardly do less than that; the question is: should they actuall
 ## What can you do with these results?
 Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it's already something to help you in your decisions.
 
-
 ## The load tool we used
 We used <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a simple yet reliable tool which can easily generate a big amount of concurrent calls. We used the version 12.8.3 as the latest did not seem to have been built for ARM64.
 
@@ -32,8 +31,8 @@ We tested all of the Azure Function production-ready tiers available in West Eur
 The client machine generating the load was a 64 GB / 8 CPU Ubuntu 22.04 VM.
 The Azure functions were hosted in the same data center and virtual network of the VMs and of the Redis Cache, via private endpoints. This proximity made sure that we were testing the workloads rather than the infrastructure.
 This is an architectural drawing of the solution:  
-<img src="./images/Architecture-API-DotNet-On-Azure-Functions.drawio"/>.  
-You can download the original diagrams.net (formerly draw.io) drawing <a href="https://raw.githubusercontent.com/RiccardoGMoschetti/API-rehab/c8f3b1b1118a8573efea524b1d0d6d2d2921c8d7/docs/Architecture_ApiSault_Functions_on_Azure.drawio" download="api-rehab.drawio">here</a>.
+<img src="./images/[Architecture-API-DotNet-On-Azure-Functions.drawio](https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png)"/>.  
+You can download the original diagrams.net (formerly draw.io) drawing <a href="" download="api-rehab.drawio">here</a>.
 
 ## What is better, Linux or Windows?
 They are very similar, except for the P2 tier, where Windows is definitely better. For the P3 tier, Linux is more comparable.  
