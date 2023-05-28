@@ -9,7 +9,8 @@ This API performance test focused on two technologies:
 - Microsoft .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
 
 ## What we found
-Intuitively, more expensive Azure Functions guaranteed better performance. This proved true not only for price tiers, but also for the OS: Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less (see below to see how much).
+Intuitively, more expensive Azure Functions guaranteed better performance. This proved true not only for price tiers, but also for the OS: Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less (see below to see how much).  
+Go directly [here](#theresults), for the result for the different OSs and tiers.
 
 ## How we measured
 We ran .NET 7 isolated process APIs on multiple Azure Funcion tiers. 
@@ -57,15 +58,17 @@ Upper limits were tested by deploying to the Functions a very basic API (/api/Si
 
 We believe any API must do _at least_ this (and a lot more). So, this can be considered the absolute upper limit for your needs.
 
+<a id="theresults"></a>
+## The results
 ### "S" tiers
 
 These were the results for Linux Functions (prices in April 2023) when we requested the "simpleJson" API:
 
-| *Tier*      | CPUs   | RAM    | Storage| Price/Month |*Max requests/s*  |   
-|-------------|--------|--------|--------|-------------|------------------|
-| *Linux S1*  |      1 | 1.75 GB|   50 GB|          64 |           **75** |
-| *Linux S2*  |      2 | 3.50 GB|   50 GB|         128 |          **150** | 
-| *Linux S3*  |      4 | 7.50 GB|   50 GB|         256 |          **300** |
+| *Tier*      | CPUs   | RAM    | Storage| Price/Month |     Good     |  Acceptable  | Barely works |
+|-------------|--------|--------|--------|-------------|--------------|--------------|--------------|
+| *Linux S1*  |      1 | 1.75 GB|   50 GB|          64 |     10 req/s |     30 req/s |    50 req/s  |
+| *Linux S2*  |      2 | 3.50 GB|   50 GB|         128 |     50 req/s |    100 req/s |   150 req/s  |
+| *Linux S3*  |      4 | 7.50 GB|   50 GB|         256 |    200 req/s |    300 req/s |   400 req/s  |
 
 These were the results for Windows Functions:
 
