@@ -1,7 +1,7 @@
 ---
 title: API rehab
 layout: home
-nav_order: 2
+nav_order: 1
 ---
 # How many requests will my API support? 
 Since the inception of API deployment, this question has been a persistent source of intrigue - and worry - for IT professionals: developers, system administrators, and architects alike. The answer hinges upon two primary variables: the hardware you intend to utilize and the scalability of the software you will develop. While determining the second factor can be challenging, you can ascertain the upper limits of the first variable and proceed accordingly.
