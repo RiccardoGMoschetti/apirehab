@@ -3,11 +3,16 @@ layout: default
 title: .NET Core Azure Functions
 nav_order: 2
 ---
-## What we found for Azure Functions
+# What we tested
+This test focused on two technologies:
+- Azure Functions (a developer guide is [here](https://learn.microsoft.com/en-us/azure/azure-functions/))
+- .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api))
+
+## What we found
 Nothing that we did not expect: more expensive Azure Functions guarantee better performance.  
 However, how expensive, and how better, intrigued us in some cases, especially for the top tiers.
 
-## How we measured Azure Functions
+## How we measured
 This very repo hosts, in the /src folder, a .NET 7 isolated process project. 
 That project uses three types of APIs to determine the upper limits of Azure Functions
 - APIs that only handle in memory objects, with no dependencies on other resources (the basic APIs)
