@@ -19,7 +19,7 @@ The APIs do the bare minimum on purpose: our aim was to test the infrastructure,
 - creates an object in memory that contains that that string, a GUID and another random string
 - serializes the object and sends a response with that serialized object
 Typical APIs will hardly do less than that; the question is: should they actually do _much more_?
-{% gist af07f24520dbe62f1a2abecc4966c4d7 %}
+<script src="https://gist.github.com/RiccardoGMoschetti/af07f24520dbe62f1a2abecc4966c4d7.js"></script>
 
 ## What can you do with these results?
 Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it's already something to help you in your decisions.
@@ -32,7 +32,7 @@ We tested all of the Azure Function production-ready tiers available in West Eur
 The client machine generating the load was a 64 GB / 8 CPU Ubuntu 22.04 VM.
 The Azure functions were hosted in the same data center and virtual network of the VMs and of the Redis Cache, via private endpoints. This proximity made sure that we were testing the workloads rather than the infrastructure.
 This is an architectural drawing of the solution:  
-<img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png"/>.  
+<img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png?raw=true"/>.  
 You can download the original diagrams.net (formerly draw.io) drawing <a href="" download="api-rehab.drawio">here</a>.
 
 ## What is better, Linux or Windows?
