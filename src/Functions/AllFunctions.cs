@@ -11,7 +11,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.Extensions.Configuration;
 
-namespace APIsault.Azure.Servers.Functions {
+namespace APIRehab.Azure.Servers.Functions {
     public class AllFunctions {
         private readonly TelemetryClient telemetryClient;
         private readonly ILogger _logger;
@@ -34,10 +34,10 @@ namespace APIsault.Azure.Servers.Functions {
             };
         }
 
-        [Function ("HitCache")]
-        public async Task<HttpResponseData> HitCache([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req) {
+        [Function ("GetFromCache")]
+        public async Task<HttpResponseData> GetFromCache([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req) {
             _redisConnection = await _redisConnectionFactory;
-            _logger.LogInformation("Entered the SimpleJson API");
+            _logger.LogInformation("Entered the GetFromCache API");
 
             var keyToRetrieve = "A"+(random.Next(100)+1).ToString();
             string jsonToReturn = string.Empty;
@@ -53,7 +53,7 @@ namespace APIsault.Azure.Servers.Functions {
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");
             response.WriteString(jsonToReturn);
-            _logger.LogInformation("Leaving the SimpleJson API");
+            _logger.LogInformation("Leaving the GetFromCache API");
             return response;
         }
       

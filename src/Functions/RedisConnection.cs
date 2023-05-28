@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace APIsault.Azure.Servers.Functions {
+namespace APIRehab.Azure.Servers.Functions {
     public class RedisConnection : IDisposable {
         private long _lastReconnectTicks = DateTimeOffset.MinValue.UtcTicks;
         private DateTimeOffset _firstErrorTime = DateTimeOffset.MinValue;
