@@ -9,14 +9,20 @@ This API performance test focused on two technologies:
 - Microsoft .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
 
 ## What we found
-Intuitively, more expensive Azure Functions guarantee better performance. This proved true not only for price tiers, but also for the OS: Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less.
+Intuitively, more expensive Azure Functions guaranteed better performance. This proved true not only for price tiers, but also for the OS: Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less (see below to see how much).
 
 ## How we measured
-We ran .NET 7 isolated process APIs on multiple Azure Funcion tiers. The APIs do the bare minimum on purpose: our aim was to test the infrastructure, not the code. The API merely retrieves a random object from an Azure Redis Cache located in the same virtual network as the Azure Functions. 
-
+We ran .NET 7 isolated process APIs on multiple Azure Funcion tiers. 
+The APIs do the bare minimum on purpose: our aim was to test the infrastructure, not the code. The API merely 
+- retrieves a random string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Functions
+- creates an object in memory that contains that that string, a GUID and another random string
+- serializes the object and sends a response with that serialized object
+Typical APIs will hardly do less than that; the question is: should they actually do _much more_?
+{% gist af07f24520dbe62f1a2abecc4966c4d7 %}
 
 ## What can you do with these results?
-Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it's already something to help you in your decisions! 
+Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it's already something to help you in your decisions.
+
 
 ## The load tool we used
 We used <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a simple yet reliable tool which can easily generate a big amount of concurrent calls. We used the version 12.8.3 as the latest did not seem to have been built for ARM64.
@@ -24,9 +30,9 @@ We used <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a simple yet rel
 ## The infrastructure / architecture we tested
 We tested all of the Azure Function production-ready tiers available in West Europe (S\*, P\*V2, P\*V3) in both OSs available (Linux and Windows).
 The client machine generating the load was a 64 GB / 8 CPU Ubuntu 22.04 VM.
-The Azure functions were hosted in the same data center and virtual network of the VM, via private endpoints.
-Also the Azure Redis Cache and the SQL Database were in the same network, on different subnets. This is an architectural drawing of the solution:  
-<img src="./assets/images/Architecture_ApiSault_Functions_on_Azure.drawio.png"/>.  
+The Azure functions were hosted in the same data center and virtual network of the VMs and of the Redis Cache, via private endpoints. This proximity made sure that we were testing the workloads rather than the infrastructure.
+This is an architectural drawing of the solution:  
+<img src="./images/Architecture-API-DotNet-On-Azure-Functions.drawio"/>.  
 You can download the original diagrams.net (formerly draw.io) drawing <a href="https://raw.githubusercontent.com/RiccardoGMoschetti/API-rehab/c8f3b1b1118a8573efea524b1d0d6d2d2921c8d7/docs/Architecture_ApiSault_Functions_on_Azure.drawio" download="api-rehab.drawio">here</a>.
 
 ## What is better, Linux or Windows?
