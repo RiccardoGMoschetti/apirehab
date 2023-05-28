@@ -6,18 +6,14 @@ nav_order: 2
 # What we tested
 This API performance test focused on two technologies:
 - Azure Functions (a developer guide is [here](https://learn.microsoft.com/en-us/azure/azure-functions/){:target="_blank" rel="noopener"})
-- .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
+- Microsoft .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
 
 ## What we found
-Nothing that we did not expect: more expensive Azure Functions guarantee better performance.  
-However, how expensive, and how better, intrigued us in some cases, especially for the top tiers.
+Intuitively, more expensive Azure Functions guarantee better performance. This proved true not only for price tiers, but also for the OS: Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less.
 
 ## How we measured
-This very repo hosts, in the /src folder, a .NET 7 isolated process project. 
-That project uses three types of APIs to determine the upper limits of Azure Functions
-- APIs that only handle in memory objects, with no dependencies on other resources (the basic APIs)
-- APIs that on purpose waste some time before returing an answer
-- (more realistic) APIs that read and write data from a Redis Cache and a SQL DB \[the result parsing of these is a WIP]
+We ran .NET 7 isolated process APIs on multiple Azure Funcion tiers. The APIs do the bare minimum on purpose: our aim was to test the infrastructure, not the code. The API merely retrieves a random object from an Azure Redis Cache located in the same virtual network as the Azure Functions. 
+
 
 ## What can you do with these results?
 Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it's already something to help you in your decisions! 
