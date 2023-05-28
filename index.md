@@ -3,13 +3,15 @@ title: Home
 layout: home
 ---
 # How many requests will my API support? 
-This question has bugged IT professionals (developers, system administrators and architects alike) ever since the first API has been deployed the answer. Two main variables determine the answer: what hardware you'll be using and the scalability of the software you'll be writing. While the second factor is difficult to establish, you can discover the upper limits of the first and work from there.
+Since the inception of API deployment, this question has been a persistent source of intrigue for IT professionals: encompassing developers, system administrators, and architects alike. The answer hinges upon two primary variables: the hardware you intend to utilize and the scalability of the software you will develop. While determining the second factor can be challenging, you can ascertain the upper limits of the first variable and proceed accordingly.
 
-This site would like to give you some data to help you make these decisions: 
-- _what pricing tier is needed to sustain a certain number of API calls?_
-- _should I use a single powerful service, or more smaller services?_
-- _is Linux better than Windows_?
-- _what cloud provider is more cost-effective_?
+This website aims to provide you with relevant data to facilitate decision-making on the following aspects:
+
+- Determining the required pricing tier to sustain a specific volume of API calls.
+- Evaluating whether to opt for a single powerful service or multiple smaller services.
+- Assessing the comparative merits of Linux versus Windows.
+- Identifying the most cost-effective cloud provider.
+- Steering clear of prevalent pitfalls encountered while striving for peak API performance.
 
 Our journey starts with these technologies:
 - Azure Functions on App Service Plans (both Linux and Windows)
