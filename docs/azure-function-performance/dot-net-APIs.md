@@ -4,9 +4,9 @@ title: .NET Core Azure Functions
 nav_order: 2
 ---
 # What we tested
-This test focused on two technologies:
-- Azure Functions (a developer guide is [here](https://learn.microsoft.com/en-us/azure/azure-functions/))
-- .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api))
+This API performance test focused on two technologies:
+- Azure Functions (a developer guide is [here](https://learn.microsoft.com/en-us/azure/azure-functions/){:target="_blank" rel="noopener"})
+- .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
 
 ## What we found
 Nothing that we did not expect: more expensive Azure Functions guarantee better performance.  
