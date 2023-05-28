@@ -31,7 +31,7 @@ We tested all of the Azure Function production-ready tiers available in West Eur
 The client machine generating the load was a 64 GB / 8 CPU Ubuntu 22.04 VM.
 The Azure functions were hosted in the same data center and virtual network of the VMs and of the Redis Cache, via private endpoints. This proximity made sure that we were testing the workloads rather than the infrastructure.
 This is an architectural drawing of the solution:  
-<img src="./images/[Architecture-API-DotNet-On-Azure-Functions.drawio](https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png)"/>.  
+<img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png"/>.  
 You can download the original diagrams.net (formerly draw.io) drawing <a href="" download="api-rehab.drawio">here</a>.
 
 ## What is better, Linux or Windows?
