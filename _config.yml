@@ -6,3 +6,5 @@ url: https://RiccardoGMoschetti.github.io/apirehab
 
 aux_links:
   Template Repository: https://github.com/RiccardoGMoschetti/apirehab
+
+gems: [jekyll-gist]
