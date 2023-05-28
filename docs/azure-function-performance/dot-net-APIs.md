@@ -18,7 +18,7 @@ The APIs do the bare minimum on purpose: our aim was to test the infrastructure,
 - creates an object in memory that contains that that string, a GUID and another random string
 - serializes the object and sends a response with that serialized object
 Typical APIs will hardly do less than that; the question is: should they actually do _much more_?
-<script src="https://gist.github.com/RiccardoGMoschetti/af07f24520dbe62f1a2abecc4966c4d7.js"></script>
+{% gist af07f24520dbe62f1a2abecc4966c4d7 %}
 
 ## What can you do with these results?
 Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it's already something to help you in your decisions.
