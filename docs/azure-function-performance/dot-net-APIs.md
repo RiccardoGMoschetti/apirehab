@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Perfomance of APIs on Azure Functions
+title: .NET Core Azure Functions
 nav_order: 2
 ---
 ## What we found for Azure Functions
