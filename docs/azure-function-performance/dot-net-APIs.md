@@ -217,9 +217,9 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
    </tr>
 </table>
 
-- *Good* performance means that the 95th percentile takes less than 100ms. This means that basically only 5% of API calls won't be very fast.
-- *Mediocre* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will be slow.
-- *Barely working* performance means the server won't stop responding, but it could take up to 30 seconds per call to do so.
+-  <span style="color:darkGreen; font-weight:bold">Good</span> performance means that the 95th percentile takes less than 100ms. This means that basically only 5% of API calls won't be very fast.
+- <span style="color:darkOrange; font-weight:bold">Mediocre</span> performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will be slow.
+- <span style="color:darkRed; font-weight:bold">Barely working</span> performance means the server won't stop responding, but it could take up to 30 seconds per call to do so.
 
 At the end of May, 2023, these were the prices for the different tiers and operating systems:
 
