@@ -59,8 +59,8 @@ Upper limits were tested by deploying to the Functions a very basic API (/api/Si
 We believe any API must do _at least_ this (and a lot more). So, this can be considered the absolute upper limit for your needs.
 
 <a id="theresults"></a>
-## The results
-### "S" tiers
+# The results
+## "S" tiers
 
 S tiers have these features and prices for Linux (May 2023)
 
@@ -77,12 +77,65 @@ Linux S*-tier functions support this number of requests, where
 - rformance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
 - *Barely working* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
 
+<table>
+  <th colspan="4">
+    Requests per second
+  </th>
+    <tr>
+      <td>
+        Tier
+      </td>
+    <td>
+     Good performance
+    </td>
+    <td>
+     Mediocre performance
+    </td>
+       <td>
+     Barely working
+    </td>
+
+  </tr>
+  <tr>
+    <td>
+     Linux *S1*
+    </td>
+    <td>
+      10
+    </td>
+       <td>
+      30
+    </td>
+     <td>
+      50
+    </td>
+  </tr>
+    <tr>
+    <td>
+     Linux *S2*
+    </td>
+    <td>
+      50
+    </td>
+       <td>
+      100
+    </td>
+     <td>
+      150
+    </td>
+  </tr>
+ </table>
+  
+    
+    
+| Requests per second        |
+|------|-------|------|------|
 |*plan*| Good  |Modest| Bad  |
 |      |(req/s)|req/s |req/s |
-|------|------|------|------|
-| *S1* |   10 |   30 |   50 |
-| *S2* |   50 |  100 |  150 |
-| *S3* |  200 |  300 |  400 |
+|------|-------|------|------|
+| Linux *S1* |    10 |   30 |   50 |
+| Linux *S2* |    50 |  100 |  150 |
+| Linux *S3* |   200 |  300 |  400 |
 
 These were the results for Windows Functions:
 
