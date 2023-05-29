@@ -72,13 +72,13 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
          Tier
       </td>
       <td>
-         <span style="color:darkGreen; font-weight:bold">Good</span> Performance 
+         <span style="color:darkGreen;font-weight:bold">Good</span> Performance 
       </td>
       <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre</span> Performance
+         <span style="color:darkOrange;font-weight:bold">Mediocre</span> Performance
       </td>
       <td>
-         <span style="color:darkRed; font-weight:bold">Bad</span> Performance
+         <span style="color:darkRed;font-weight:bold">Bad</span> Performance
       </td>
    </tr>
    <tr>
@@ -86,10 +86,10 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
        
       </td>
       <td>
-         (95th perc < 100ms)
+         (95th perc &lt; 100ms)
       </td>
       <td>
-         (95th perc < 1000ms)
+         (95th perc &lt; 1000ms)
       </td>
       <td>
          (any 95th perc)
@@ -164,10 +164,10 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
        
       </td>
       <td>
-         (95th perc < 100ms)
+         (95th perc &lt; 100ms)
       </td>
       <td>
-         (95th perc < 1000ms)
+         (95th perc &lt; 1000ms)
       </td>
       <td>
          (any 95th perc)
