@@ -64,15 +64,17 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
 
 S tiers have these features and prices for Linux (May 2023)
 
-|*plan*|CPUs|RAM GB|Storage|€/month| 
-|------|----|------|-------|-------|
-| *S1* |  1 | 1.75 |    50 |    64 |
-| *S2* |  2 | 3.50 |    50 |   128 |
-| *S3* |  4 | 7.50 |    50 |   256 |
+|*plan*|CPUs|RAM GB|Storage|€/month|€/month|
+|      |    |      |       | Linux |Windows|
+|------|----|------|-------|-------|-------|
+| *S1* |  1 | 1.75 |    50 |    64 |    67 |
+| *S2* |  2 | 3.50 |    50 |   128 |   135 |
+| *S3* |  4 | 7.50 |    50 |   256 |   270 |
 
 Linux S*-tier functions support this number of requests, where
 - *Good* performance means that the 95th percentile takes less than 100ms. This means that basically only 5% of API calls won't be very fast.
-- *Acceptable* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
+- *Acceptable* pe
+- rformance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
 - *Barely working* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
 
 |*plan*| Good  |Modest| Bad  |
