@@ -228,7 +228,7 @@ At the end of May, 2023, these were the prices for the different tiers and opera
 |------|----|------|-------|-------|-------|
 | *S1* |  1 | 1.75 |    50 |    64 |    67 |
 | *S2* |  2 | 3.50 |    50 |   128 |   135 |
-| *S3* |  4 | 7.50 |    50 |   256 |   270 |
+| *S3* |  4 | 7.50 |    50 |   256 |  270 |
          
 From this picture you can gather than Windows workloads, in the S* tier, allow you more requests than Linux, at a slightly increased price. 
 This means that, <em>unless you have particular reasons to choose Linux functions with .NET workloads, Windows S* tiers are preferrable to Linux S* tiers.</em>
