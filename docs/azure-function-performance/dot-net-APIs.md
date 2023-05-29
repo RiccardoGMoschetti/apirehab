@@ -61,21 +61,7 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
 <a id="theresults"></a>
 # The results
 ## "S" tiers
-
-S tiers have these features and prices for Linux (May 2023)
-
-|*plan*|CPUs|RAM GB|Storage|€/month|€/month|
-|      |    |      |       | Linux |Windows|
-|------|----|------|-------|-------|-------|
-| *S1* |  1 | 1.75 |    50 |    64 |    67 |
-| *S2* |  2 | 3.50 |    50 |   128 |   135 |
-| *S3* |  4 | 7.50 |    50 |   256 |   270 |
-
-Linux S*-tier functions support this number of requests, where
-- *Good* performance means that the 95th percentile takes less than 100ms. This means that basically only 5% of API calls won't be very fast.
-- *Acceptable* pe
-- rformance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
-- *Barely working* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
+### Linux tiers
 
 <table>
    <th colspan="4">
@@ -97,7 +83,7 @@ Linux S*-tier functions support this number of requests, where
    </tr>
    <tr>
       <td>
-         Tier
+       
       </td>
       <td>
          (95th perc < 100ms)
@@ -111,7 +97,7 @@ Linux S*-tier functions support this number of requests, where
    </tr>
    <tr>
       <td>
-         Linux S1
+         Linux <em>S1</em>
       </td>
       <td>
          10
@@ -125,7 +111,7 @@ Linux S*-tier functions support this number of requests, where
    </tr>
    <tr>
       <td>
-         Linux *S2*
+         Linux <em>S2</em>
       </td>
       <td>
          50
@@ -139,7 +125,7 @@ Linux S*-tier functions support this number of requests, where
    </tr>
    <tr>
       <td>
-         Linux S3
+         Linux <em>S3</em>
       </td>
       <td>
          200
@@ -152,24 +138,98 @@ Linux S*-tier functions support this number of requests, where
       </td>
    </tr>
 </table>
+
+### Windows tiers
+
+<table>
+   <th colspan="4">
+      Maximum requests per second
+   </th>
+   <tr>
+      <td>
+         Tier
+      </td>
+      <td>
+         <span style="color:darkGreen; font-weight:bold">Good</span> Performance 
+      </td>
+      <td>
+         <span style="color:darkOrange; font-weight:bold">Mediocre</span> Performance
+      </td>
+      <td>
+         <span style="color:darkRed; font-weight:bold">Bad</span> Performance
+      </td>
+   </tr>
+   <tr>
+      <td>
+       
+      </td>
+      <td>
+         (95th perc < 100ms)
+      </td>
+      <td>
+         (95th perc < 1000ms)
+      </td>
+      <td>
+         (any 95th perc)
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Windows <em>S1</em>
+      </td>
+      <td>
+         10
+      </td>
+      <td>
+         50
+      </td>
+      <td>
+         70
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Windows <em>S2</em>
+      </td>
+      <td>
+        100
+      </td>
+      <td>
+         150
+      </td>
+      <td>
+         175
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Windows <em>S3</em>
+      </td>
+      <td>
+         325
+      </td>
+      <td>
+         350
+      </td>
+      <td>
+         400
+      </td>
+   </tr>
+</table>
+
+- *Good* performance means that the 95th percentile takes less than 100ms. This means that basically only 5% of API calls won't be very fast.
+- *Mediocre* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
+- *Barely working* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
+
+At the end of May, 2023, these were the prices for the different tiers and operating systems:
+
+|*plan*|CPUs|RAM GB|Storage|€/month|€/month|
+|      |    |      |       | Linux |Windows|
+|------|----|------|-------|-------|-------|
+| *S1* |  1 | 1.75 |    50 |    64 |    67 |
+| *S2* |  2 | 3.50 |    50 |   128 |   135 |
+| *S3* |  4 | 7.50 |    50 |   256 |   270 |
          
-| Requests per second        |
-|------|-------|------|------|
-|*plan*| Good  |Modest| Bad  |
-|      |(req/s)|req/s |req/s |
-|------|-------|------|------|
-| Linux *S1* |    10 |   30 |   50 |
-| Linux *S2* |    50 |  100 |  150 |
-| Linux *S3* |   200 |  300 |  400 |
-
-These were the results for Windows Functions:
-
-| *Tier*         | CPUs   | RAM    | Storage| Price/Month |*Max requests/s*|   
-|----------------|--------|--------|--------|-------------|----------------|
-| *Windows  S1*  |      1 | 1.75 GB|   50 GB|          67 |          *100* |
-| *Windows  S2*  |      2 | 3.50 GB|   50 GB|         135 |          *200* | 
-| *Windows  S3*  |      4 | 7.50 GB|   50 GB|         270 |          *500* |
-
 From this picture you can gather than Windows workloads, in the S* tier, allow you more requests than Linux, at a slightly increased price. 
 
 ### "P*V2" tiers
