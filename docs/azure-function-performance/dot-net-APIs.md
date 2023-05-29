@@ -40,23 +40,17 @@ They are very similar, except for the P2 tier, where Windows is definitely bette
 Linux is always cheaper (especially in the P3 tier). If your application is stateless, more Linux resources can give you better performance at lower prices and they should be used rather than Windows.
 
 ## The data we worked with
-For every tier of the available Azure Functions, Vegeta gave us the following information:
-- minimum value (which we ignored)
-- mean (which we ignored)
-- 50th percentile (which we consider more revealing than the mean, as the latter is more influenced by outliers)
-- 90th percentile
-- 95th percentile
-- 99th percentile
-- maximum value (which we ignored as well)
+For every tier of the available Azure Functions, Vegeta gave us the following information: minimum value, mean, 50th percentile (which we consider more revealing than the mean, as the latter is more influenced by outliers, 90th percentile (the data that we considered more important), maxium value.
 
-For our purposes, a test is _passed_ at a certain rate when, for ten minutes straight, more than 98% of the requests are fullfilled and the 95th percentile for that rate takes less or equal to 999 milliseconds to reply. 999 milliseconds can be considered a lax paramater; take into consideration that this test is supposed to give you the _higher_ limit of the infrastructure, which your users won't hopefully encounter continuously.
+For our purposes, we focused on the 95th percentile and we stressed the functions for ten minutes straight. 
+
+We then categorized the performance into:
+
+- <span style="color:darkGreen; font-weight:bold">Good</span> performance: at that rate, 95% of API calls take less than 100ms. This means that  only 5% of API calls won't be very fast.
+- <span style="color:darkOrange; font-weight:bold">Mediocre</span>: 95% takes less than 1 second. This means that 5% of API calls will be slow.
+- <span style="color:darkRed; font-weight:bold">Barely working</span>: the server won't break, but it will take up to 30 seconds per call to do so.
+
 In this test, we did not use B tiers of app functions, as they are not reported as production ready by Microsoft.
-
-Upper limits were tested by deploying to the Functions a very basic API (/api/SimpleJson) that does the follow:
-- it creates an object in memory with a GUID and a randorm string
-- it serializes the object and gives it back to the client.
-
-We believe any API must do _at least_ this (and a lot more). So, this can be considered the absolute upper limit for your needs.
 
 <a id="theresults"></a>
 # The results
@@ -72,13 +66,13 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
          Tier
       </td>
       <td>
-         <span style="color:darkGreen;font-weight:bold">Good</span> Performance 
+         <span style="color:darkGreen;font-weight:bold">Good Performance</span>
       </td>
       <td>
-         <span style="color:darkOrange;font-weight:bold">Mediocre</span> Performance
+         <span style="color:darkOrange;font-weight:bold">Mediocre Performance</span>
       </td>
       <td>
-         <span style="color:darkRed;font-weight:bold">Bad</span> Performance
+         <span style="color:darkRed;font-weight:bold">Barely working</span>
       </td>
    </tr>
    <tr>
@@ -150,13 +144,13 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
          Tier
       </td>
       <td>
-         <span style="color:darkGreen; font-weight:bold">Good</span> Performance 
+         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
       </td>
       <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre</span> Performance
+         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
       </td>
       <td>
-         <span style="color:darkRed; font-weight:bold">Bad</span> Performance
+         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
       </td>
    </tr>
    <tr>
@@ -217,9 +211,6 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
    </tr>
 </table>
 
-- <span style="color:darkGreen; font-weight:bold">Good</span> performance means that the 95th percentile takes less than 100ms. This means that basically only 5% of API calls won't be very fast.
-- <span style="color:darkOrange; font-weight:bold">Mediocre</span> performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will be slow.
-- <span style="color:darkRed; font-weight:bold">Barely working</span> performance means the server won't stop responding, but it could take up to 30 seconds per call to do so.
 
 At the end of May, 2023, these were the prices for the different tiers and operating systems:
 
@@ -246,18 +237,18 @@ Findings for the Linux P\*V2 functions:
    <th colspan="4">
       Maximum requests per second
    </th>
-   <tr>
+    <tr>
       <td>
          Tier
       </td>
       <td>
-         <span style="color:darkGreen;font-weight:bold">Good</span> Performance 
+         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
       </td>
       <td>
-         <span style="color:darkOrange;font-weight:bold">Mediocre</span> Performance
+         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
       </td>
       <td>
-         <span style="color:darkRed;font-weight:bold">Bad</span> Performance
+         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
       </td>
    </tr>
    <tr>
@@ -324,18 +315,18 @@ Findings for the Linux P\*V2 functions:
    <th colspan="4">
       Maximum requests per second
    </th>
-   <tr>
+ <tr>
       <td>
          Tier
       </td>
       <td>
-         <span style="color:darkGreen; font-weight:bold">Good</span> Performance 
+         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
       </td>
       <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre</span> Performance
+         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
       </td>
       <td>
-         <span style="color:darkRed; font-weight:bold">Bad</span> Performance
+         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
       </td>
    </tr>
    <tr>
