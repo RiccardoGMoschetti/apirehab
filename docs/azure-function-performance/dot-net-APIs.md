@@ -83,13 +83,13 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
    </tr>
    <tr>
       <td>
-       
+       &nbsp;
       </td>
       <td>
-         (95th perc &lt; 100ms)
+         95th perc. < 100ms
       </td>
       <td>
-         (95th perc &lt; 1000ms)
+         95th perc. < 1000ms
       </td>
       <td>
          (any 95th perc)
@@ -161,13 +161,13 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
    </tr>
    <tr>
       <td>
-       
+       &nbsp;
       </td>
       <td>
-         (95th perc &lt; 100ms)
+           95th perc. &lt; 100ms
       </td>
       <td>
-         (95th perc &lt; 1000ms)
+            95th perc. < 1000ms
       </td>
       <td>
          (any 95th perc)
@@ -217,7 +217,7 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
    </tr>
 </table>
 
--  <span style="color:darkGreen; font-weight:bold">Good</span> performance means that the 95th percentile takes less than 100ms. This means that basically only 5% of API calls won't be very fast.
+- <span style="color:darkGreen; font-weight:bold">Good</span> performance means that the 95th percentile takes less than 100ms. This means that basically only 5% of API calls won't be very fast.
 - <span style="color:darkOrange; font-weight:bold">Mediocre</span> performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will be slow.
 - <span style="color:darkRed; font-weight:bold">Barely working</span> performance means the server won't stop responding, but it could take up to 30 seconds per call to do so.
 
@@ -228,7 +228,7 @@ At the end of May, 2023, these were the prices for the different tiers and opera
 |------|----|------|-------|-------|-------|
 | *S1* |  1 | 1.75 |    50 |    64 |    67 |
 | *S2* |  2 | 3.50 |    50 |   128 |   135 |
-| *S3* |  4 | 7.50 |    50 |   256 |  270 |
+| *S3* |  4 | 7.50 |    50 |   256 |   270 |
          
 From this picture you can gather than Windows workloads, in the S* tier, allow you more requests than Linux, at a slightly increased price. 
 This means that, <em>unless you have particular reasons to choose Linux functions with .NET workloads, Windows S* tiers are preferrable to Linux S* tiers.</em>
@@ -236,30 +236,180 @@ This means that, <em>unless you have particular reasons to choose Linux function
 ### "P*V2" tiers
 
 These tiers are the second generation of "premium" app services.  
-Compared to "S" tiers, they have more memory and perform much, much better. They can still be your choice for most workloads where you don't need the P3 tier (which also gives you long-term discount which are not allowed for P2 tiers).
+Compared to "S" tiers, they have more memory and perform much better. They can still be your choice for most workloads where you don't need the P3 tier (which also gives you long-term discount which are not allowed for P2 tiers).
 
 Findings for the Linux P\*V2 functions:
 
-| *Tier*        | CPUs   | RAM     | Storage| Price/Month |*Max requests/s*|   
-|---------------|--------|---------|--------|-------------|----------------|
-| *Linux P1V2*  |      1 |  3.50 GB|  250 GB|          78 |          *150* |
-| *Linux P2V2*  |      2 |  7.50 GB|  250 GB|         156 |          *400* | 
-| *Linux P3V2*  |      4 | 14.00 GB|  250 GB|         311 |          *750* |
+### Linux tiers
 
-Findings for the Windows P\*V2 Functions:
+<table>
+   <th colspan="4">
+      Maximum requests per second
+   </th>
+   <tr>
+      <td>
+         Tier
+      </td>
+      <td>
+         <span style="color:darkGreen;font-weight:bold">Good</span> Performance 
+      </td>
+      <td>
+         <span style="color:darkOrange;font-weight:bold">Mediocre</span> Performance
+      </td>
+      <td>
+         <span style="color:darkRed;font-weight:bold">Bad</span> Performance
+      </td>
+   </tr>
+   <tr>
+      <td>
+       &nbsp;
+      </td>
+      <td>
+         95th perc. < 100ms
+      </td>
+      <td>
+         95th perc. < 1000ms
+      </td>
+      <td>
+         (any 95th perc)
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Linux <em>P1v2</em>
+      </td>
+      <td>
+         50
+      </td>
+      <td>
+         75
+      </td>
+      <td>
+        150
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Linux <em>P2v2</em>
+      </td>
+      <td>
+         250
+      </td>
+      <td>
+         400
+      </td>
+      <td>
+         150
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Linux <em>P3v2</em>
+      </td>
+      <td>
+         600
+      </td>
+      <td>
+         750
+      </td>
+      <td>
+         850
+      </td>
+   </tr>
+</table>
 
-| *Tier*          | CPUs   | RAM     | Storage| Price/Month |*Max requests/s*|   
-|-----------------|--------|---------|--------|-------------|----------------|
-| *Windows P1V2*  |      1 |  3.50 GB|  250 GB|         135 |          *250* |
-| *Windows P2V2*  |      2 |  7.50 GB|  250 GB|         270 |          *600* | 
-| *Windows P3V2*  |      4 | 14.00 GB|  250 GB|         539 |         *1050* |
+### Windows tiers
+
+<table>
+   <th colspan="4">
+      Maximum requests per second
+   </th>
+   <tr>
+      <td>
+         Tier
+      </td>
+      <td>
+         <span style="color:darkGreen; font-weight:bold">Good</span> Performance 
+      </td>
+      <td>
+         <span style="color:darkOrange; font-weight:bold">Mediocre</span> Performance
+      </td>
+      <td>
+         <span style="color:darkRed; font-weight:bold">Bad</span> Performance
+      </td>
+   </tr>
+   <tr>
+      <td>
+       &nbsp;
+      </td>
+      <td>
+           95th perc. &lt; 100ms
+      </td>
+      <td>
+            95th perc. < 1000ms
+      </td>
+      <td>
+         (any 95th perc)
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Windows <em>P1v2</em>
+      </td>
+      <td>
+         70
+      </td>
+      <td>
+         175
+      </td>
+      <td>
+         200
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Windows <em>P2v2</em>
+      </td>
+      <td>
+        325
+      </td>
+      <td>
+         475
+      </td>
+      <td>
+         475
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Windows <em>P3v2</em>
+      </td>
+      <td>
+         800
+      </td>
+      <td>
+         850
+      </td>
+      <td>
+         900
+      </td>
+   </tr>
+</table>
+
+|*plan*  |CPUs|RAM GB|Storage|€/month|€/month|
+|        |    |      |       | Linux |Windows|
+|--------|----|------|-------|-------|-------|
+| *P1v2* |  1 | 3.50 |   250 |    78 |   135 |
+| *P2v2* |  2 | 7.50 |   250 |   156 |   270 |
+| *P3v2* |  4 |14.00 |   250 |   311 |   539 |
+ 
 
 You can see here that Windows tiers can get very expensive but also _very_ performant. A Windows P3 function will serve more than 1000 requests per second.
 
 ### "P*V3" tiers
 
 These are the best newest in the Azure app service plans.  
-They don't necessarily perform better than the P2 counterparts. However, they allow for "reservation" (long term discounts) if you promise to use them for one or three years (the longer the commitment, the stronger the discount). This makes them a very good fit when you know you are going to need app services in the next year (even if not for the same purposes as today: nothing prevents you from buying an app service now and use it with different domain names in the future, taking advantage of the same discount.)
+They don't necessarily perform better than the P2 counterparts. However, they allow for "reservation" (long term discounts) if you promise to use them for one or three years (the longer the commitment, the stronger the discount). This makes them a very good fit when you know you are going to need app services in the next year (even if not for the same purposes as today: nothing prevents you from buying an app service now and use it with different domain names in the future, while still taking advantage of the same discount.)
 
 Findings for the Linux P\*V*3* functions:
 
