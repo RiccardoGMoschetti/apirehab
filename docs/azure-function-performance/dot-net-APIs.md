@@ -218,8 +218,8 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
 </table>
 
 - *Good* performance means that the 95th percentile takes less than 100ms. This means that basically only 5% of API calls won't be very fast.
-- *Mediocre* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
-- *Barely working* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
+- *Mediocre* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will be slow.
+- *Barely working* performance means the server won't stop responding, but it could take up to 30 seconds per call to do so.
 
 At the end of May, 2023, these were the prices for the different tiers and operating systems:
 
@@ -231,6 +231,7 @@ At the end of May, 2023, these were the prices for the different tiers and opera
 | *S3* |  4 | 7.50 |    50 |   256 |   270 |
          
 From this picture you can gather than Windows workloads, in the S* tier, allow you more requests than Linux, at a slightly increased price. 
+This means that, <em>unless you have particular reasons to choose Linux functions with .NET workloads, Windows S* tiers are preferrable to Linux S* tiers.</em>
 
 ### "P*V2" tiers
 
