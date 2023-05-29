@@ -81,24 +81,25 @@ Linux S*-tier functions support this number of requests, where
   <th colspan="4">
     Requests per second
   </th>
-    <tr>
+    <th>
       <td>
         Tier
       </td>
     <td>
-     Good performance
+     Good performance <img src="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/regular/face-kiss.svg" height="20" width="20" style="color:green"/>
     </td>
     <td>
      Mediocre performance
     </td>
        <td>
      Barely working
-    </td>
+    </th>
 
   </tr>
   <tr>
     <td>
      Linux *S1*
+    
     </td>
     <td>
       10
@@ -124,7 +125,22 @@ Linux S*-tier functions support this number of requests, where
       150
     </td>
   </tr>
+    <tr>
+    <td>
+     Linux S3
+    </td>
+    <td>
+      200
+    </td>
+       <td>
+      300
+    </td>
+     <td>
+      400
+    </td>
+  </tr>
  </table>
+ 
   
     
     
