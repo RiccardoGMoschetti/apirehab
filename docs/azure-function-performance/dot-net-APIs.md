@@ -78,70 +78,81 @@ Linux S*-tier functions support this number of requests, where
 - *Barely working* performance means that the 95th percentile takes less than 1 second This means that 5% of API calls will slow.
 
 <table>
-  <th colspan="4">
-    Maximum requests per second
-  </th>
-    <tr>
+   <th colspan="4">
+      Maximum requests per second
+   </th>
+   <tr>
       <td>
-        Tier
+         Tier
       </td>
-    <td>
-      <span style="color:green">Good</span> Performance 
-    </td>
-    <td>
-     Mediocre performance
-    </td>
-       <td>
-     Barely working
+      <td>
+         <span style="color:darkGreen">Good</span> Performance 
       </td>
-    </tr>
-
-  <tr>
-    <td>
-     Linux S1
-    </td>
-    <td>
-      10
-    </td>
-    <td>
-      30
-    </td>
-    <td>
-      50
-    </td>
-  </tr>
-  <tr>
-    <td>
-     Linux *S2*
-    </td>
-    <td>
-      50
-    </td>
-    <td>
-      100
-    </td>
-     <td>
-      150
-    </td>
-  </tr>
-    <tr>
-    <td>
-     Linux S3
-    </td>
-    <td>
-      200
-    </td>
-       <td>
-      300
-    </td>
-     <td>
-      400
-    </td>
-  </tr>
- </table>
-  
-    
-    
+      <td>
+         <span style="color:darkYellow">Mediocre</span> Performance
+      </td>
+      <td>
+         <span style="color:darkRed">Bad</span> Performance
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Tier
+      </td>
+      <td>
+         (95th perc < 100ms)
+      </td>
+      <td>
+         (95th perc < 1000ms)
+      </td>
+      <td>
+         (any 95th perc)
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Linux S1
+      </td>
+      <td>
+         10
+      </td>
+      <td>
+         30
+      </td>
+      <td>
+         50
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Linux *S2*
+      </td>
+      <td>
+         50
+      </td>
+      <td>
+         100
+      </td>
+      <td>
+         150
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Linux S3
+      </td>
+      <td>
+         200
+      </td>
+      <td>
+         300
+      </td>
+      <td>
+         400
+      </td>
+   </tr>
+</table>
+         
 | Requests per second        |
 |------|-------|------|------|
 |*plan*| Good  |Modest| Bad  |
