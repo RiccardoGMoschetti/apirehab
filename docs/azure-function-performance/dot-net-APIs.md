@@ -64,11 +64,12 @@ We believe any API must do _at least_ this (and a lot more). So, this can be con
 
 These were the results for Linux Functions (prices in April 2023) when we requested the "simpleJson" API:
 
-| *Tier*      | CPUs   | RAM    | Storage| Price/Month |     Good     |  Acceptable  | Barely works |
-|-------------|--------|--------|--------|-------------|--------------|--------------|--------------|
-| *Linux S1*  |      1 | 1.75 GB|   50 GB|          64 |     10 req/s |     30 req/s |    50 req/s  |
-| *Linux S2*  |      2 | 3.50 GB|   50 GB|         128 |     50 req/s |    100 req/s |   150 req/s  |
-| *Linux S3*  |      4 | 7.50 GB|   50 GB|         256 |    200 req/s |    300 req/s |   400 req/s  |
+|*Linux*|CPU|RAM GB|SDD GB| €/month | Good |Modest| Bad  |
+|       |   |      |      |         | req/s|req/s |req/s |
+|-------|---|------|------|---------|------|------|------|
+| *S1*  | 1 | 1.75 |   50 |      64 |   10 |   30 |   50 |
+| *S2*  | 2 | 3.50 |   50 |     128 |   50 |  100 |  150 |
+| *S3*  | 4 | 7.50 |   50 |     256 |  200 |  300 |  400 |
 
 These were the results for Windows Functions:
 
