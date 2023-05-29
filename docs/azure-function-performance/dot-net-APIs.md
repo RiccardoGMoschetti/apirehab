@@ -9,12 +9,13 @@ This API performance test focused on two technologies:
 - Microsoft .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
 
 ## What we found
-Intuitively, more expensive Azure Functions guaranteed better performance. This proved true not only for price tiers, but also for the OS: Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less (see below to see how much).  
+Intuitively, more expensive Azure Functions guaranteed better performance. Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less (see below to see how much).  
 Go directly [here](#theresults), for the result for the different OSs and tiers.
 
 ## How we measured
 We ran .NET 7 isolated process APIs on multiple Azure Funcion tiers. 
-The APIs do the bare minimum on purpose: our aim was to test the infrastructure, not the code. The API merely 
+The APIs do the bare minimum on purpose: our aim was to test the infrastructure, not the code.
+The tested API merely 
 - retrieves a random string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Functions
 - creates an object in memory that contains that that string, a GUID and another random string
 - serializes the object and sends a response with that serialized object
