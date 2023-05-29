@@ -86,13 +86,13 @@ Linux S*-tier functions support this number of requests, where
          Tier
       </td>
       <td>
-         <span style="color:darkGreen">Good</span> Performance 
+         <span style="color:darkGreen; font-weight:bold">Good</span> Performance 
       </td>
       <td>
-         <span style="color:darkYellow">Mediocre</span> Performance
+         <span style="color:darkOrange; font-weight:bold">Mediocre</span> Performance
       </td>
       <td>
-         <span style="color:darkRed">Bad</span> Performance
+         <span style="color:darkRed; font-weight:bold">Bad</span> Performance
       </td>
    </tr>
    <tr>
