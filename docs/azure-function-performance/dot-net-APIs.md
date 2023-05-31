@@ -405,11 +405,12 @@ They don't necessarily perform better than the P2 counterparts. However, they al
 
 Findings for the Linux P\*V*3* functions:
 
-| *Tier*      |CPUs| RAM |Storage| EUR/Month|3 years EUR/month|*Max requests/s*|   
-|-------------|----|-----|-------|----------|-----------------|----------------|
-| *Linux P1V3*|  2 | 8 GB| 250 GB|       118|               53|             450|
-| *Linux P2V3*|  4 |16 GB| 250 GB|       235|              106|             750|
-| *Linux P3V3*|  8 |32 GB| 250 GB|       471|              212|            1050|
+| *Tier*      |CPUs| RAM |Storage|EUR/Month|3 years EUR/month|EUR/Month|
+|             |    |     |       | Linux   |     Windows     |         |
+|-------------|----|-----|-------|---------|-----------------|---------|
+| *Linux P1V3*|  2 | 8 GB| 250 GB|      118|               53|      450|
+| *Linux P2V3*|  4 |16 GB| 250 GB|      235|              106|      750|
+| *Linux P3V3*|  8 |32 GB| 250 GB|      471|              212|     1050|
 
 
 Findings for the Windows P\*V*3* Functions:
@@ -417,11 +418,11 @@ Findings for the Windows P\*V*3* Functions:
 | *Tier*        |CPUs| RAM |Storage| EUR/Month|3 years EUR/month|*Max requests/s*|   
 |---------------|----|-----|-------|----------|-----------------|----------------|
 | *Windows P1V3*|  2 | 8 GB| 250 GB|       223|              134|             500|
-| *Windows P2V3*|  4 |16 GB| 250 GB|       446|              268|            1000|
+| *Windows P2V3*|  4 |16 GB| 250 GB|       447|              268|            1000|
 | *Windows P3V3*|  8 |32 GB| 250 GB|       894|              537|            1050|
 
 
-You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers. If you need a lot of requests to support and you can commit for one or three years, the decision to go to a Linux P3 app service seems quite obvious. 
+You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers. If you need a lot of requests to support and you can commit for one or three years, the decision to go to a Linux P*V3 app service seems quite obvious. 
 
 ----
 
