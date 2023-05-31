@@ -215,7 +215,7 @@ In this test, we did not use B tiers of app functions, as they are not reported 
 
 At the end of May, 2023, these were the prices for the different tiers and operating systems:
 
-|*plan*|CPUs|RAM GB|Storage|€/month|€/month|
+| plan |CPUs|RAM GB|Storage|€/month|€/month|
 |      |    |      |       | Linux |Windows|
 |------|----|------|-------|-------|-------|
 | *S1* |  1 | 1.75 |    50 |    63 |    66 |
