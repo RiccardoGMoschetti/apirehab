@@ -218,9 +218,9 @@ At the end of May, 2023, these were the prices for the different tiers and opera
 |*plan*|CPUs|RAM GB|Storage|€/month|€/month|
 |      |    |      |       | Linux |Windows|
 |------|----|------|-------|-------|-------|
-| *S1* |  1 | 1.75 |    50 |    64 |    67 |
-| *S2* |  2 | 3.50 |    50 |   128 |   135 |
-| *S3* |  4 | 7.50 |    50 |   256 |   270 |
+| *S1* |  1 | 1.75 |    50 |    63 |    66 |
+| *S2* |  2 | 3.50 |    50 |   126 |   132 |
+| *S3* |  4 | 7.50 |    50 |   251 |   264 |
          
 From this picture you can gather than Windows workloads, in the S* tier, allow you more requests than Linux, at a slightly increased price. 
 This means that, <em>unless you have particular reasons to choose Linux functions with .NET workloads, Windows S* tiers are preferrable to Linux S* tiers.</em>
@@ -391,9 +391,9 @@ Findings for the Linux P\*V2 functions:
 |*plan*  |CPUs|RAM GB|Storage|€/month|€/month|
 |        |    |      |       | Linux |Windows|
 |--------|----|------|-------|-------|-------|
-| *P1v2* |  1 | 3.50 |   250 |    78 |   135 |
-| *P2v2* |  2 | 7.50 |   250 |   156 |   270 |
-| *P3v2* |  4 |14.00 |   250 |   311 |   539 |
+| *P1v2* |  1 | 3.50 |   250 |    76 |   132 |
+| *P2v2* |  2 | 7.50 |   250 |   152 |   264 |
+| *P3v2* |  4 |14.00 |   250 |   305 |   529 |
  
 
 You can see here that Windows tiers can get very expensive but also _very_ performant. A Windows P3 function will serve more than 1000 requests per second.
@@ -407,18 +407,18 @@ Findings for the Linux P\*V*3* functions:
 
 | *Tier*      |CPUs| RAM |Storage| EUR/Month|3 years EUR/month|*Max requests/s*|   
 |-------------|----|-----|-------|----------|-----------------|----------------|
-| *Linux P1V3*|  2 | 8 GB| 250 GB|       120|               54|             450|
-| *Linux P2V3*|  4 |16 GB| 250 GB|       240|              108|             750|
-| *Linux P3V3*|  8 |32 GB| 250 GB|       480|              216|            1050|
+| *Linux P1V3*|  2 | 8 GB| 250 GB|       118|               53|             450|
+| *Linux P2V3*|  4 |16 GB| 250 GB|       235|              106|             750|
+| *Linux P3V3*|  8 |32 GB| 250 GB|       471|              212|            1050|
 
 
 Findings for the Windows P\*V*3* Functions:
 
 | *Tier*        |CPUs| RAM |Storage| EUR/Month|3 years EUR/month|*Max requests/s*|   
 |---------------|----|-----|-------|----------|-----------------|----------------|
-| *Windows P1V3*|  2 | 8 GB| 250 GB|       227|              136|             500|
-| *Windows P2V3*|  4 |16 GB| 250 GB|       456|              274|            1000|
-| *Windows P3V3*|  8 |32 GB| 250 GB|       911|              547|            1050|
+| *Windows P1V3*|  2 | 8 GB| 250 GB|       223|              134|             500|
+| *Windows P2V3*|  4 |16 GB| 250 GB|       446|              268|            1000|
+| *Windows P3V3*|  8 |32 GB| 250 GB|       894|              537|            1050|
 
 
 You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers. If you need a lot of requests to support and you can commit for one or three years, the decision to go to a Linux P3 app service seems quite obvious. 
