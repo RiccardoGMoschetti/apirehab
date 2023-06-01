@@ -10,7 +10,7 @@ This API performance test focused on two technologies:
 
 ## What we found
 Intuitively, more expensive Azure Functions guaranteed better performance. Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less (see below to see how much; especially for the P\*v3, they can be the best choice).
-Go directly [here](#theresults), for the result for the different OSs and tiers.
+Go directly [here](#theresults), too see the result for the different Operating Systems and tiers.
 
 ## How we measured
 We ran .NET 7 isolated process APIs on multiple Azure Funcion tiers. 
@@ -19,11 +19,12 @@ The tested API (GetFromCache in the code) does the following
 - retrieves a string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Function;
 - creates an object in memory that contains that that string, a GUID and another random string;
 - serializes the object and sends a response with that serialized object.
+
 Typical APIs will hardly do less than that; the question is whether they should they actually do _much more_.
 <script src="https://gist.github.com/RiccardoGMoschetti/af07f24520dbe62f1a2abecc4966c4d7.js"></script>
 
 ## What can I do with these results?
-Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it's  something to help you in your decisions.
+Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it can help to help you with your decisions.
 
 ## The load tool
 We used <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a simple yet reliable tool which can easily generate a big amount of concurrent calls. We used the version 12.8.3 as the latest did not seem to have been built for ARM64. The client machine generating the load was a 64 GB / 8 CPU Ubuntu 22.04 VM located in the same network as the functions being tested.
@@ -33,14 +34,14 @@ We tested all of the Azure Function production-ready tiers available in West Eur
 The Azure functions were hosted in the same data center and virtual network of the VMs and of the Redis Cache, via private endpoints. This proximity made sure that the network latency were minimal.
 This is an architectural drawing of the solution:  
 <img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png?raw=true"/>.  
-You can download the original diagrams.net (formerly draw.io) drawing <a href="https://raw.githubusercontent.com/RiccardoGMoschetti/apirehab/main/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio" download="api-rehab.drawio">here</a>.
+You can download the original diagrams.net (formerly draw.io) drawing <a href="https://raw.githubusercontent.com/RiccardoGMoschetti/apirehab/main/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio?raw=true" download="api-rehab.drawio">here</a>.
 
 ## What is better, Linux or Windows?
-They are very similar, except for the P2 tier, where Windows is definitely better. For the P3 tier, Linux is more comparable.  
-Linux is always *cheaper* (especially in the P3 tier). If your application is stateless, more Linux resources can give you better performance at lower prices and they can definitely be used rather than Windows.
+They are very similar, except for the P\*v2 tiers, where Windows is definitely better. For the P\*v3 tiers, Linux is more comparable.  
+Linux is always *cheaper* (especially in the P\*v3 tiers). If your application is stateless, more Linux resources can give you better performance at lower prices and they can definitely be used rather than Windows.
 
 ## The data made available by Vegeta
-For every tier of the available Azure Functions, Vegeta gave us the following information: minimum value, mean, 50th percentile (which we consider more revealing than the mean, as the latter is more influenced by outliers, 90th percentile (the data that we considered more important), maxium value.
+For every tier of the available Azure Functions, Vegeta gave us the following information: minimum value, mean, 50th percentile (which we consider more revealing than the mean, as the latter is more influenced by outliers, 90th percentile (the data that we considered more important), maximum value.
 For our purposes, we focused on the 95th percentile and we stressed the functions for ten minutes straight. 
 We then categorized the performance into:
 
@@ -145,10 +146,10 @@ In this test, we did not use B tiers of app functions, as they are not reported 
          <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
       </td>
       <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
+         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
       </td>
       <td>
-         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
+         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
       </td>
    </tr>
    <tr>
@@ -209,6 +210,7 @@ In this test, we did not use B tiers of app functions, as they are not reported 
    </tr>
 </table>
 
+### Prices
 
 At the end of May, 2023, these were the prices for the different tiers and operating systems:
 
@@ -225,9 +227,9 @@ This means that, <em>unless you have particular reasons to choose Linux function
 ### "P*V2" tiers
 
 These tiers are the second generation of "premium" app services.  
-Compared to "S" tiers, they have more memory and perform much better. They can still be your choice for most workloads where you don't need the P3 tier (which also gives you long-term discount which are not allowed for P2 tiers).
+Compared to "S" tiers, they have more memory and perform much better. They can still be your choice for most workloads where you don't need the P\*v3 tiers (which also give you long-term discount which are not allowed for P\*v2 tiers).
 
-Findings for the Linux P\*V2 functions:
+Findings for the Linux P\*v2 functions:
 
 ### Linux tiers
 
@@ -243,10 +245,10 @@ Findings for the Linux P\*V2 functions:
          <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
       </td>
       <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
+         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
       </td>
       <td>
-         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
+         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
       </td>
    </tr>
    <tr>
@@ -321,10 +323,10 @@ Findings for the Linux P\*V2 functions:
          <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
       </td>
       <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
+         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
       </td>
       <td>
-         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
+         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
       </td>
    </tr>
    <tr>
@@ -385,6 +387,8 @@ Findings for the Linux P\*V2 functions:
    </tr>
 </table>
 
+### Prices
+
 |*plan*  |CPUs|RAM GB|Storage|€/month|€/month|
 |        |    |      |       | Linux |Windows|
 |--------|----|------|-------|-------|-------|
@@ -392,10 +396,9 @@ Findings for the Linux P\*V2 functions:
 | *P2v2* |  2 | 7.50 |   250 |   152 |   264 |
 | *P3v2* |  4 |14.00 |   250 |   305 |   529 |
  
-
 You can see here that Windows tiers can get very expensive but also _very_ performant. A Windows P3 function will serve more than 900 requests per second.
 
-### "P*V3" tiers
+### "P*v3" tiers
 
 These are the best newest in the Azure app service plans.  
 They perform better than the P2 counterparts and they allow for "reservation" (long term discounts) if you commit to use them for one or three years (the longer the commitment, the stronger the discount). This makes them a very good fit when you know you are going to need app services in the next year (even if not for the same purposes as today: nothing prevents you from buying an app service now and use it with different domain names in the future, while still taking advantage of the same discount.)
@@ -416,10 +419,10 @@ Findings for the  P\*V*3* functions:
          <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
       </td>
       <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
+         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
       </td>
       <td>
-         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
+         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
       </td>
    </tr>
    <tr>
@@ -494,10 +497,10 @@ Findings for the  P\*V*3* functions:
          <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
       </td>
       <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
+         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
       </td>
       <td>
-         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
+         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
       </td>
    </tr>
    <tr>
@@ -558,7 +561,7 @@ Findings for the  P\*V*3* functions:
    </tr>
 </table>
 
-
+### Prices
 
 |*Tier* |CPUs| RAM |Storage|As you go|3 years|As you go |3 years |
 |       |    |     |       | Linux   | Linux |Windows   |Windows |
@@ -569,4 +572,6 @@ Findings for the  P\*V*3* functions:
 
 
 You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers. If you need a lot of requests to support and you can commit for one or three years, the decision to go to a Linux P*V3 app service seems quite obvious. 
+
+# Final considerations
 
