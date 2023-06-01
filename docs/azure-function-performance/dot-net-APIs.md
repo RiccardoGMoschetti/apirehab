@@ -574,4 +574,46 @@ Findings for the  P\*V*3* functions:
 You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers. If you need a lot of requests to support and you can commit for one or three years, the decision to go to a Linux P*V3 app service seems quite obvious. 
 
 # Final considerations
+<table>
+   <th colspan="5">
+     Tier efficiency
+   </th>
+ <tr>
+      <td>
+         Tier
+      </td>
+     <td>
+         Tier
+      </td>
+      <td>
+         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
+      </td>
+      <td>
+         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
+      </td>
+      <td>
+         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
+      </td>
+   
+   </tr>
 
+<tr><td>P2V3</td><td>Linux</td><td>750</td><td>235</td><td>3,19</td></tr>
+<tr><td>P1V3</td><td>Linux</td><td>250</td><td>118</td><td>2,12</td></tr>
+<tr><td>P2V3</td><td>Windows</td><td>900</td><td>447</td><td>2,01</td></tr>
+<tr><td>P3V2</td><td>Linux</td><td>600</td><td>305</td><td>1,97</td></tr>
+<tr><td>P3V3</td><td>Linux</td><td>900</td><td>471</td><td>1,91</td></tr>
+<tr><td>P2V2</td><td>Linux</td><td>250</td><td>152</td><td>1,64</td></tr>
+<tr><td>P3V2</td><td>Windows</td><td>800</td><td>529</td><td>1,51</td></tr>
+<tr><td>P1V3</td><td>Windows</td><td>325</td><td>223</td><td>1,46</td></tr>
+<tr><td>P3V3</td><td>Windows</td><td>1250</td><td>894</td><td>1,4</td></tr>
+<tr><td>P2V2</td><td>Windows</td><td>325</td><td>264</td><td>1,23</td></tr>
+<tr><td>S3</td><td>Windows</td><td>325</td><td>264</td><td>1,23</td></tr>
+<tr><td>S3</td><td>Linux</td><td>200</td><td>251</td><td>0,8</td></tr>
+<tr><td>S2</td><td>Windows</td><td>100</td><td>132</td><td>0,76</td></tr>
+<tr><td>P1V2</td><td>Linux</td><td>50</td><td>76</td><td>0,66</td></tr>
+<tr><td>P1V2</td><td>Windows</td><td>70</td><td>132</td><td>0,53</td></tr>
+<tr><td>S2</td><td>Linux</td><td>50</td><td>126</td><td>0,4</td></tr>
+<tr><td>S1</td><td>Linux</td><td>10</td><td>63</td><td>0,16</td></tr>
+<tr><td>S1</td><td>Windows</td><td>10</td><td>66</td><td>0,15</td></tr>
+ </table>
+ 
