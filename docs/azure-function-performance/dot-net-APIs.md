@@ -4,30 +4,29 @@ title: Azure Functions Performance
 nav_order: 2
 ---
 # Test scope
-This API performance test focused on two technologies:
-- Azure Functions (a developer guide is [here](https://learn.microsoft.com/en-us/azure/azure-functions/){:target="_blank" rel="noopener"})
-- Microsoft .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
+The scope of this API performance test was centered around two key technologies:
+- Azure Functions (refer to the developer guide available [here](https://learn.microsoft.com/en-us/azure/azure-functions/){:target="_blank" rel="noopener"})
+- Microsoft .NET core APIs (start your exploration [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
 
-## What we found
-Intuitively, more expensive Azure Functions guaranteed better performance. Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less (see below to see how much; especially for the P\*v3, they can be the best choice).
-Go directly [here](#theresults), too see the result for the different Operating Systems and tiers.
+## Key Findings
+In our investigation, we discovered that higher-cost Azure Functions generally deliver better performance. It is important to note that Linux functions are less efficient in running .NET workloads compared to Windows functions. However, Linux functions offer cost advantages, particularly in the P\*v3 tier, making them a viable and favorable choice. To gain more insights into the outcomes across different operating systems and tiers, please refer to the relevant section [below](#finalConsiderations).
 
-## How we measured
-We ran .NET 7 isolated process APIs on multiple Azure Funcion tiers. 
-The APIs do the bare minimum on purpose, since the aim of the test is infrastructure rather than the code.
-The tested API (GetFromCache in the code) does the following
-- retrieves a string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Function;
-- creates an object in memory that contains that that string, a GUID and another random string;
-- serializes the object and sends a response with that serialized object.
+## Measurement Approach
+To evaluate performance, we executed .NET 7 isolated process APIs on various Azure Function tiers. These APIs were intentionally designed to perform the bare minimum, as the objective was to assess infrastructure rather than code. The tested API, named "GetFromCache" in the provided code snippet, followed these steps:
+1. Retrieval of a string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Function.
+2. Creation of an in-memory object containing the retrieved string, a GUID, and another random string.
+3. Serialization of the object and generation of a response containing the serialized object.
 
-Typical APIs will hardly do less than that; the question is whether they should they actually do _much more_.
+It is worth noting that typical APIs are unlikely to perform fewer operations than this; the question arises as to whether they should actually perform considerably more.
+
+Here is a snippet of the code used for the "GetFromCache" API:
 <script src="https://gist.github.com/RiccardoGMoschetti/af07f24520dbe62f1a2abecc4966c4d7.js"></script>
 
-## What can I do with these results?
-Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it can help to help you with your decisions.
+## Implications of the Results
+Although your software and dependencies may differ from the ones tested here, this exercise provides an upper limit benchmark that even flawless software cannot surpass. We believe this data can assist you in making informed decisions.
 
-## The load tool
-We used <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a simple yet reliable tool which can easily generate a big amount of concurrent calls. We used the version 12.8.3 as the latest did not seem to have been built for ARM64. The client machine generating the load was a 64 GB / 8 CPU Ubuntu 22.04 VM located in the same network as the functions being tested.
+## Load tool used
+For generating a substantial number of concurrent calls, we utilized Vegeta, <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a reliable and straightforward tool. We employed version 12.8.3, as the latest version appeared to lack compatibility with ARM64 architecture. The client machine responsible for generating the load was an Ubuntu 22.04 VM with 64 GB RAM and 8 CPUs, situated within the same network as the functions being tested.
 
 ## The infrastructure / architecture 
 We tested all of the Azure Function production-ready tiers available in West Europe (S\*, P\*V2, P\*V3) in both OSs available (Linux and Windows).
@@ -51,7 +50,7 @@ We then categorized the performance into:
 
 In this test, we did not use B tiers of app functions, as they are not reported as production ready by Microsoft.
 
-<a id="theresults"></a>
+<a id="theResults"></a>
 # The results
 ## "S" tiers
 ### Linux tiers
@@ -572,7 +571,7 @@ Findings for the  P\*V*3* functions:
 
 
 You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers. If you need a lot of requests to support and you can commit for one or three years, the decision to go to a Linux P*V3 app service seems quite obvious. 
-
+<a id="finalConsiderations"></a>
 # Final considerations
 Even though Windows tiers perform better than Linux tiers, the latter cost less than proportionally.  
 Below you can find a "cost efficency" value, that is the ratio between the number of maximum req/s (provided the 95th percentile respond in less than 100 ms) and the cost per month. The higher cost efficiency, the more bang for the buck.  
