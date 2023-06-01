@@ -574,14 +574,14 @@ Findings for the  P\*V*3* functions:
 You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers. If you need a lot of requests to support and you can commit for one or three years, the decision to go to a Linux P*V3 app service seems quite obvious. 
 
 # Final considerations
-Even though Windows tiers perform better than Linux tiers, the latter cost less than proportionally. 
-Below you can find a "cost efficency" value, that is the ratio between the number of maximum req/s (provided the 95th percentile respond in less than 100 ms) and the cost per month. The higher cost efficiency, the more bang for the buck.
+Even though Windows tiers perform better than Linux tiers, the latter cost less than proportionally.  
+Below you can find a "cost efficency" value, that is the ratio between the number of maximum req/s (provided the 95th percentile respond in less than 100 ms) and the cost per month. The higher cost efficiency, the more bang for the buck.  
 For instance, if you need 1000 req/s, you are better off with four P1V3 Linux tiers (which serve 250 req/s each and cost 118x4=472 euros monthly) 
-rather than with one P3v3 tier (which serves up to 1250 requests for seconds but cost 894 euros per month)
+rather than with one P3v3 tier (which serves up to 1250 requests for seconds but cost 894 euros per month)  
 Also consider that generally it is better to have more small instances than one bigger instance: if the application restarts because it (say) goes out of memory, the single big instance becomes unavailable for everyone; the several smaller instances remain available for n-1 instances until the broken 1 comes back up again. 
 <table>
  <th colspan="5">Tier efficiency</th>
- <tr><td>Tier</td><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">OS</span></td><td><span style="color:darkOrange; font-weight:bold">maxium req/s for good performance</span></td><td>Cost per month</td><td>Cost efficiency</td></tr>
+ <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">OS</span></td><td><span style="color:darkOrange; font-weight:bold">maxium req/s for Good Performance</span></td><td>Cost per month</td><td>Cost efficiency</td></tr>
    <tr><td>P2V3</td><td>Linux</td><td>750</td><td>235</td><td>3,19</td></tr>
    <tr><td>P1V3</td><td>Linux</td><td>250</td><td>118</td><td>2,12</td></tr>
    <tr><td>P2V3</td><td>Windows</td><td>900</td><td>447</td><td>2,01</td></tr>
@@ -601,4 +601,3 @@ Also consider that generally it is better to have more small instances than one 
    <tr><td>S1</td><td>Linux</td><td>10</td><td>63</td><td>0,16</td></tr>
    <tr><td>S1</td><td>Windows</td><td>10</td><td>66</td><td>0,15</td></tr>
 </table>
- 
