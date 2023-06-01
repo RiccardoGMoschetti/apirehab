@@ -3,48 +3,45 @@ layout: default
 title: Azure Functions Performance
 nav_order: 2
 ---
-# What we tested
+# Test scope
 This API performance test focused on two technologies:
 - Azure Functions (a developer guide is [here](https://learn.microsoft.com/en-us/azure/azure-functions/){:target="_blank" rel="noopener"})
 - Microsoft .NET core APIs (start [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
 
 ## What we found
-Intuitively, more expensive Azure Functions guaranteed better performance. Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less (see below to see how much).  
+Intuitively, more expensive Azure Functions guaranteed better performance. Linux functions don't run .NET workloads as efficiently as Windows functions; however, they cost less (see below to see how much; especially for the P\*v3, they can be the best choice).
 Go directly [here](#theresults), for the result for the different OSs and tiers.
 
 ## How we measured
 We ran .NET 7 isolated process APIs on multiple Azure Funcion tiers. 
-The APIs do the bare minimum on purpose: our aim was to test the infrastructure, not the code.
-The tested API merely 
-- retrieves a random string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Functions
-- creates an object in memory that contains that that string, a GUID and another random string
-- serializes the object and sends a response with that serialized object
-Typical APIs will hardly do less than that; the question is: should they actually do _much more_?
+The APIs do the bare minimum on purpose, since the aim of the test is infrastructure rather than the code.
+The tested API (GetFromCache in the code) does the following
+- retrieves a string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Function;
+- creates an object in memory that contains that that string, a GUID and another random string;
+- serializes the object and sends a response with that serialized object.
+Typical APIs will hardly do less than that; the question is whether they should they actually do _much more_.
 <script src="https://gist.github.com/RiccardoGMoschetti/af07f24520dbe62f1a2abecc4966c4d7.js"></script>
 
-## What can you do with these results?
-Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it's already something to help you in your decisions.
+## What can I do with these results?
+Even though your software and dependencies can be _very_ different from those we tested here, this exercise can give you an idea of the upper limit you will not be able to exceed even if your software is perfect. We believe it's  something to help you in your decisions.
 
-## The load tool we used
-We used <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a simple yet reliable tool which can easily generate a big amount of concurrent calls. We used the version 12.8.3 as the latest did not seem to have been built for ARM64.
+## The load tool
+We used <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a simple yet reliable tool which can easily generate a big amount of concurrent calls. We used the version 12.8.3 as the latest did not seem to have been built for ARM64. The client machine generating the load was a 64 GB / 8 CPU Ubuntu 22.04 VM located in the same network as the functions being tested.
 
-## The infrastructure / architecture we tested
+## The infrastructure / architecture 
 We tested all of the Azure Function production-ready tiers available in West Europe (S\*, P\*V2, P\*V3) in both OSs available (Linux and Windows).
-The client machine generating the load was a 64 GB / 8 CPU Ubuntu 22.04 VM.
-The Azure functions were hosted in the same data center and virtual network of the VMs and of the Redis Cache, via private endpoints. This proximity made sure that we were testing the workloads rather than the infrastructure.
+The Azure functions were hosted in the same data center and virtual network of the VMs and of the Redis Cache, via private endpoints. This proximity made sure that the network latency were minimal.
 This is an architectural drawing of the solution:  
 <img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png?raw=true"/>.  
-You can download the original diagrams.net (formerly draw.io) drawing <a href="" download="api-rehab.drawio">here</a>.
+You can download the original diagrams.net (formerly draw.io) drawing <a href="https://raw.githubusercontent.com/RiccardoGMoschetti/apirehab/main/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio" download="api-rehab.drawio">here</a>.
 
 ## What is better, Linux or Windows?
 They are very similar, except for the P2 tier, where Windows is definitely better. For the P3 tier, Linux is more comparable.  
-Linux is always cheaper (especially in the P3 tier). If your application is stateless, more Linux resources can give you better performance at lower prices and they should be used rather than Windows.
+Linux is always *cheaper* (especially in the P3 tier). If your application is stateless, more Linux resources can give you better performance at lower prices and they can definitely be used rather than Windows.
 
-## The data we worked with
+## The data made available by Vegeta
 For every tier of the available Azure Functions, Vegeta gave us the following information: minimum value, mean, 50th percentile (which we consider more revealing than the mean, as the latter is more influenced by outliers, 90th percentile (the data that we considered more important), maxium value.
-
 For our purposes, we focused on the 95th percentile and we stressed the functions for ten minutes straight. 
-
 We then categorized the performance into:
 
 - <span style="color:darkGreen; font-weight:bold">Good</span> performance: at that rate, 95% of API calls take less than 100ms. This means that  only 5% of API calls won't be very fast.
@@ -288,10 +285,10 @@ Findings for the Linux P\*V2 functions:
          250
       </td>
       <td>
-         400
+         350
       </td>
       <td>
-         150
+         400
       </td>
    </tr>
    <tr>
@@ -396,41 +393,180 @@ Findings for the Linux P\*V2 functions:
 | *P3v2* |  4 |14.00 |   250 |   305 |   529 |
  
 
-You can see here that Windows tiers can get very expensive but also _very_ performant. A Windows P3 function will serve more than 1000 requests per second.
+You can see here that Windows tiers can get very expensive but also _very_ performant. A Windows P3 function will serve more than 900 requests per second.
 
 ### "P*V3" tiers
 
 These are the best newest in the Azure app service plans.  
-They don't necessarily perform better than the P2 counterparts. However, they allow for "reservation" (long term discounts) if you promise to use them for one or three years (the longer the commitment, the stronger the discount). This makes them a very good fit when you know you are going to need app services in the next year (even if not for the same purposes as today: nothing prevents you from buying an app service now and use it with different domain names in the future, while still taking advantage of the same discount.)
+They perform better than the P2 counterparts and they allow for "reservation" (long term discounts) if you commit to use them for one or three years (the longer the commitment, the stronger the discount). This makes them a very good fit when you know you are going to need app services in the next year (even if not for the same purposes as today: nothing prevents you from buying an app service now and use it with different domain names in the future, while still taking advantage of the same discount.)
 
-Findings for the Linux P\*V*3* functions:
+Findings for the  P\*V*3* functions:
 
-| *Tier*      |CPUs| RAM |Storage|EUR/Month|3 years EUR/month|EUR/Month|
-|             |    |     |       | Linux   |     Windows     |         |
-|-------------|----|-----|-------|---------|-----------------|---------|
-| *Linux P1V3*|  2 | 8 GB| 250 GB|      118|               53|      450|
-| *Linux P2V3*|  4 |16 GB| 250 GB|      235|              106|      750|
-| *Linux P3V3*|  8 |32 GB| 250 GB|      471|              212|     1050|
+### Linux tiers
+
+<table>
+   <th colspan="4">
+      Maximum requests per second
+   </th>
+    <tr>
+      <td>
+         Tier
+      </td>
+      <td>
+         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
+      </td>
+      <td>
+         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
+      </td>
+      <td>
+         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
+      </td>
+   </tr>
+   <tr>
+      <td>
+       &nbsp;
+      </td>
+      <td>
+         95th perc. < 100ms
+      </td>
+      <td>
+         95th perc. < 1000ms
+      </td>
+      <td>
+         (any 95th perc)
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Linux <em>P1v3</em>
+      </td>
+      <td>
+         250
+      </td>
+      <td>
+         350
+      </td>
+      <td>
+        300
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Linux <em>P2v3</em>
+      </td>
+      <td>
+         250
+      </td>
+      <td>
+         350
+      </td>
+      <td>
+         400
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Linux <em>P3v3</em>
+      </td>
+      <td>
+         750
+      </td>
+      <td>
+         850      
+      </td>
+      <td>
+         1000
+      </td>
+   </tr>
+</table>
+
+### Windows tiers
+
+<table>
+   <th colspan="4">
+      Maximum requests per second
+   </th>
+ <tr>
+      <td>
+         Tier
+      </td>
+      <td>
+         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
+      </td>
+      <td>
+         <span style="color:darkOrange; font-weight:bold">Mediocre Perfmance</span>
+      </td>
+      <td>
+         <span style="color:darkRed; font-weight:bold">Bad Perfmance</span>
+      </td>
+   </tr>
+   <tr>
+      <td>
+       &nbsp;
+      </td>
+      <td>
+           95th perc. &lt; 100ms
+      </td>
+      <td>
+            95th perc. < 1000ms
+      </td>
+      <td>
+         (any 95th perc)
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Windows <em>P1v3</em>
+      </td>
+      <td>
+        325
+      </td>
+      <td>
+         425
+      </td>
+      <td>
+         450
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Windows <em>P2v3</em>
+      </td>
+      <td>
+        900
+      </td>
+      <td>
+         1000
+      </td>
+      <td>
+         1050
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Windows <em>P3v2</em>
+      </td>
+      <td>
+         1250
+      </td>
+      <td>
+         1250
+      </td>
+      <td>
+         1250
+      </td>
+   </tr>
+</table>
 
 
-Findings for the Windows P\*V*3* Functions:
 
-| *Tier*        |CPUs| RAM |Storage| EUR/Month|3 years EUR/month|*Max requests/s*|   
-|---------------|----|-----|-------|----------|-----------------|----------------|
-| *Windows P1V3*|  2 | 8 GB| 250 GB|       223|              134|             500|
-| *Windows P2V3*|  4 |16 GB| 250 GB|       447|              268|            1000|
-| *Windows P3V3*|  8 |32 GB| 250 GB|       894|              537|            1050|
+|*Tier* |CPUs| RAM |Storage|As you go|3 years|As you go |3 years |
+|       |    |     |       | Linux   | Linux |Windows   |Windows |
+|-------|----|-----|-------|---------|-------|----------|--------|
+| *P1V3*|  2 | 8 GB| 250 GB|      118|     53|      223 |    134 |
+| *P2V3*|  4 |16 GB| 250 GB|      235|    106|      447 |    268 |
+| *P3V3*|  8 |32 GB| 250 GB|      471|    212|      894 |    537 |
 
 
 You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers. If you need a lot of requests to support and you can commit for one or three years, the decision to go to a Linux P*V3 app service seems quite obvious. 
 
-----
-
-[^1]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
-
-[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
-[GitHub Pages]: https://docs.github.com/en/pages
-[README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md
-[Jekyll]: https://jekyllrb.com
-[GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
-[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
