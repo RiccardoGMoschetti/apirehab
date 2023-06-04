@@ -31,7 +31,7 @@ For generating a substantial number of concurrent calls, we utilized Vegeta, <a 
 ## The infrastructure / architecture 
 Our testing encompassed all production-ready Azure Function tiers available in the West Europe region, covering both Linux and Windows operating systems. The Azure functions were hosted in the same data center and virtual network as the VMs and the Redis Cache, utilizing private endpoints to ensure minimal network latency. The provided architectural diagram illustrates the solution's structure. 
 <img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png?raw=true"/>.  
-You can obtain the original diagrams.net (formerly draw.io) drawing <a href="https://raw.githubusercontent.com/RiccardoGMoschetti/apirehab/main/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio?raw=true" download="a.txt">from this location</a>.
+You can obtain the original diagrams.net (formerly draw.io) drawing <a href="/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio" download">from this location</a>.
 
 ## What is better, Linux or Windows?
 They are very similar, except for the P\*v2 tiers, where Windows is definitely better. For the P\*v3 tiers, Linux is more comparable.  
