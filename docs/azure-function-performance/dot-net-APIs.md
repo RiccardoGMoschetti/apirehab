@@ -33,23 +33,20 @@ Our testing encompassed all production-ready Azure Function tiers available in t
 <img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png?raw=true"/>.  
 You can obtain the original diagrams.net (formerly draw.io) drawing <a href="/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio" download>from this location</a>.
 
-## What is better, Linux or Windows?
-They are very similar, except for the P\*v2 tiers, where Windows is definitely better. For the P\*v3 tiers, Linux is more comparable.  
-Linux is always *cheaper* (especially in the P\*v3 tiers). If your application is stateless, more Linux resources can give you better performance at lower prices and they can definitely be used rather than Windows.
+## Linux vs Windows
+Linux and Windows exhibit similar performance, except for the Pv2 tiers, where Windows surpasses Linux. In the P\*v3 tiers, Linux offers comparable performance and is consistently more cost-effective. If your application is stateless, opting for more Linux resources can provide superior performance at lower prices, making them a viable alternative to Windows.
 
-## The data made available by Vegeta
-For every tier of the available Azure Functions, Vegeta gave us the following information: minimum value, mean, 50th percentile (which we consider more revealing than the mean, as the latter is more influenced by outliers, 90th percentile (the data that we considered more important), maximum value.
-For our purposes, we focused on the 95th percentile and we stressed the functions for ten minutes straight. 
-We then categorized the performance into:
+## Data from Vegeta
+Vegeta provided us with the following information for each Azure Functions tier: minimum value, mean, 50th percentile (considered more informative than the mean due to its lower susceptibility to outliers), 90th percentile (the most significant data point), and maximum value. For our analysis, we focused on the 95th percentile and subjected the functions to continuous stress for ten minutes. We categorized the performance as follows:
 
-- <span style="color:darkGreen; font-weight:bold">Good</span> performance: at that rate, 95% of API calls take less than 100ms. This means that  only 5% of API calls won't be very fast.
-- <span style="color:darkOrange; font-weight:bold">Mediocre</span>: 95% takes less than 1 second. This means that 5% of API calls will be slow.
-- <span style="color:darkRed; font-weight:bold">Barely working</span>: the server won't break, but it will take up to 30 seconds per call to do so.
+- <span style="color:darkGreen; font-weight:bold">Good</span> performance: In this category, 95% of API calls are completed in less than 100ms, indicating that only a small percentage of API calls may experience slower response times.
+- <span style="color:darkOrange; font-weight:bold">Mediocre</span>: Here, 95% of API calls are completed in less than 1 second, indicating that a small portion of API calls may be relatively slow.
+- <span style="color:darkRed; font-weight:bold">Barely working</span>: Although the server remains functional, each call may take up to 30 seconds to complete.
 
-In this test, we did not use B tiers of app functions, as they are not reported as production ready by Microsoft.
+It is important to note that we did not include the B-tier app functions in this test, as Microsoft does not categorize them as production-ready.
 
 <a id="theResults"></a>
-# The results
+# Results
 ## "S" tiers
 ### Linux tiers
 
@@ -209,7 +206,7 @@ In this test, we did not use B tiers of app functions, as they are not reported 
 
 ### Prices
 
-At the end of May, 2023, these were the prices for the different tiers and operating systems:
+As of May 2023, the following are the monthly prices for the different tiers and operating systems:
 
 | plan |CPUs|RAM GB|Storage|€/month|€/month|
 |      |    |      |       | Linux |Windows|
@@ -218,15 +215,13 @@ At the end of May, 2023, these were the prices for the different tiers and opera
 | *S2* |  2 | 3.50 |    50 |   126 |   132 |
 | *S3* |  4 | 7.50 |    50 |   251 |   264 |
          
-From this picture you can gather than Windows workloads, in the S* tier, allow you more requests than Linux, at a slightly increased price. 
-This means that, <em>unless you have particular reasons to choose Linux functions with .NET workloads, Windows S* tiers are preferrable to Linux S* tiers.</em>
+From the above information, it can be inferred that Windows workloads in the S* tier provide higher request capacities than Linux, albeit at a slightly higher price. Therefore, unless there are specific reasons to opt for Linux functions with .NET workloads, Windows S* tiers are preferable to Linux S* tiers.
 
 ### "P*V2" tiers
 
-These tiers are the second generation of "premium" app services.  
-Compared to "S" tiers, they have more memory and perform much better. They can still be your choice for most workloads where you don't need the P\*v3 tiers (which also give you long-term discount which are not allowed for P\*v2 tiers).
+These tiers represent the second generation of "premium" app services. They offer increased memory and significantly improved performance compared to the "S" tiers. For most workloads not requiring the Pv3 tiers (which also provide long-term discounts not available for Pv2 tiers), the Pv2 tiers are a suitable choice.
 
-Findings for the Linux P\*v2 functions:
+Linux P\*v2 functions:
 
 ### Linux tiers
 
@@ -393,14 +388,14 @@ Findings for the Linux P\*v2 functions:
 | *P2v2* |  2 | 7.50 |   250 |   152 |   264 |
 | *P3v2* |  4 |14.00 |   250 |   305 |   529 |
  
-You can see here that Windows tiers can get very expensive but also _very_ performant. A Windows P3 function will serve more than 900 requests per second.
+You can see here that Windows tiers can get very expensive but also very performant. A Windows P3v2 function will serve more than 900 requests per second.
 
 ### "P*v3" tiers
 
-These are the best newest in the Azure app service plans.  
-They perform better than the P2 counterparts and they allow for "reservation" (long term discounts) if you commit to use them for one or three years (the longer the commitment, the stronger the discount). This makes them a very good fit when you know you are going to need app services in the next year (even if not for the same purposes as today: nothing prevents you from buying an app service now and use it with different domain names in the future, while still taking advantage of the same discount.)
+The P\*v3 tiers represent the latest and best Azure app service plans.  
+They offer superior performance compared to the v2 counterparts and allow for long-term reservation discounts if committed for one or three years. This makes them an excellent choice when future app service requirements are known, even if not necessarily for the same purposes as the present.
 
-Findings for the  P\*V*3* functions:
+Findings for the  P\*v*3* functions:
 
 ### Linux tiers
 
@@ -568,14 +563,13 @@ Findings for the  P\*V*3* functions:
 | *P3V3*|  8 |32 GB| 250 GB|      471|    212|      894 |    537 |
 
 
-You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers. If you need a lot of requests to support and you can commit for one or three years, the decision to go to a Linux P*V3 app service seems quite obvious. 
+You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers.  
+If there is a need to accommodate a substantial volume of requests and there is a willingness to commit for a duration of one or three years, opting for a Linux P*V3 app service emerges as a highly evident decision.
 <a id="finalConsiderations"></a>
 # Final considerations
-Even though Windows tiers perform better than Linux tiers, the latter cost less than proportionally.  
-Below you can find a "cost efficency" value, that is the ratio between the number of maximum req/s (provided the 95th percentile respond in less than 100 ms) and the cost per month. The higher cost efficiency, the more bang for the buck.  
-For instance, if you need 1000 req/s, you are better off with four P1V3 Linux tiers (which serve 250 req/s each and cost 118x4=472 euros monthly) 
-rather than with one P3v3 tier (which serves up to 1250 requests for seconds but cost 894 euros per month)  
-Also consider that generally it is better to have more small instances than one bigger instance: if the application restarts because it (say) goes out of memory, the single big instance becomes unavailable for everyone; the several smaller instances remain available for n-1 instances until the broken 1 comes back up again. 
+It should be noted that although Windows tiers demonstrate superior performance compared to Linux tiers, the latter exhibit a more favorable cost-effectiveness ratio.  
+This cost efficiency value represents the relationship between the maximum number of requests per second (ensuring a response time within the 95th percentile of less than 100 ms) and the monthly cost. A higher cost efficiency implies greater value for the investment. For example, if there is a requirement for 1000 requests per second, it is more advantageous to opt for four P1V3 Linux tiers, each capable of serving 250 requests per second, resulting in a monthly cost of 472 euros (118 euros per tier x 4) instead of selecting a single P3v3 tier, which can handle up to 1250 requests per second but incurs a monthly cost of 894 euros.  
+Additionally, it is generally advisable to utilize multiple smaller instances rather than a single larger instance. This approach mitigates the impact of instance failures,  as a single large instance would render the entire application unavailable until it becomes operational again, whereas several smaller instances ensure the availability of n-1 instances during the downtime of a faulty instance.
 <table>
  <th colspan="5">Tier efficiency</th>
  <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">OS</span></td><td><span style="color:darkOrange; font-weight:bold">maxium req/s for Good Performance</span></td><td>Cost per month</td><td>Cost efficiency</td></tr>
