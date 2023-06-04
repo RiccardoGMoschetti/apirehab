@@ -9,18 +9,22 @@ The scope of this API performance test was centered around two key technologies:
 - Microsoft .NET core APIs (start your exploration [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
 
 ## Key Findings
-In our investigation, we discovered that higher-cost Azure Functions generally deliver better performance. It is important to note that Linux functions are less efficient in running .NET workloads compared to Windows functions. However, Linux functions offer cost advantages, particularly in the P\*v3 tier, making them a viable and favorable choice. To gain more insights into the outcomes across different operating systems and tiers, please refer to the relevant section [below](#finalConsiderations).
+In our investigation, we discovered that 
+- Higher-cost Azure Functions offer performance that exceeds the proportional increase in their price. For example, an S1 app function (63 euros per month) can accommodate 10 requests per second, while a P3v3 Windows function (894 euros per month) has the capability to handle up to 1250 requests per second, which is much more than 14 times the price. We show a "cost efficiency" factor below as a summary for these considerations.
+- Linux functions are less efficient in running .NET workloads compared to Windows functions. 
+- However, Linux functions offer cost advantages, particularly in the P\*v3 tier, making them a viable and favorable choice in many cases when you can split your workload in more smaller app function instances. 
+
+To gain more insights into the outcomes across different operating systems and tiers, please refer to the relevant section [below](#finalConsiderations).
 
 ## Measurement Approach
-To evaluate performance, we executed .NET 7 isolated process APIs on various Azure Function tiers. These APIs were intentionally designed to perform the bare minimum, as the objective was to assess infrastructure rather than code. The tested API, named "GetFromCache" in the provided code snippet, followed these steps:
+To evaluate performance, we executed .NET 7 isolated process APIs on various Azure Function tiers. These APIs were intentionally designed to perform the bare minimum, as the objective was to assess infrastructure rather than code. The tested API, named "GetFromCache" in the code  snippet below, followed these steps:
 1. Retrieval of a string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Function.
 2. Creation of an in-memory object containing the retrieved string, a GUID, and another random string.
 3. Serialization of the object and generation of a response containing the serialized object.
 
-It is worth noting that typical APIs are unlikely to perform fewer operations than this; the question arises as to whether they should actually perform considerably more.
-
-Here is a snippet of the code used for the "GetFromCache" API:
 <script src="https://gist.github.com/RiccardoGMoschetti/af07f24520dbe62f1a2abecc4966c4d7.js"></script>
+
+It is worth noting that typical APIs are unlikely to perform fewer operations than this; the question arises as to whether they should actually perform considerably more.
 
 ## Implications of the Results
 Although your software and dependencies may differ from the ones tested here, this exercise provides an upper limit benchmark that even flawless software cannot surpass. We believe this data can assist you in making informed decisions.
