@@ -29,11 +29,9 @@ Although your software and dependencies may differ from the ones tested here, th
 For generating a substantial number of concurrent calls, we utilized Vegeta, <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a reliable and straightforward tool. We employed version 12.8.3, as the latest version appeared to lack compatibility with ARM64 architecture. The client machine responsible for generating the load was an Ubuntu 22.04 VM with 64 GB RAM and 8 CPUs, situated within the same network as the functions being tested.
 
 ## The infrastructure / architecture 
-We tested all of the Azure Function production-ready tiers available in West Europe (S\*, P\*V2, P\*V3) in both OSs available (Linux and Windows).
-The Azure functions were hosted in the same data center and virtual network of the VMs and of the Redis Cache, via private endpoints. This proximity made sure that the network latency were minimal.
-This is an architectural drawing of the solution:  
+Our testing encompassed all production-ready Azure Function tiers available in the West Europe region, covering both Linux and Windows operating systems. The Azure functions were hosted in the same data center and virtual network as the VMs and the Redis Cache, utilizing private endpoints to ensure minimal network latency. The provided architectural diagram illustrates the solution's structure. 
 <img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png?raw=true"/>.  
-You can download the original diagrams.net (formerly draw.io) drawing <a href="https://raw.githubusercontent.com/RiccardoGMoschetti/apirehab/main/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio?raw=true" download="api-rehab.drawio">here</a>.
+You can obtain the original diagrams.net (formerly draw.io) drawing <a href="https://raw.githubusercontent.com/RiccardoGMoschetti/apirehab/main/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio?raw=true" download="a.txt">from this location</a>.
 
 ## What is better, Linux or Windows?
 They are very similar, except for the P\*v2 tiers, where Windows is definitely better. For the P\*v3 tiers, Linux is more comparable.  
