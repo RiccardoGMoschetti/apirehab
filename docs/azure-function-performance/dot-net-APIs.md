@@ -403,7 +403,7 @@ They offer superior performance compared to the v2 counterparts and allow for lo
 ### Linux tiers
 
 <table>
-   <th colspan="4"> <font size="+2">
+   <th colspan="4"> <font size="+1">
       Maximum requests per second</font>
    </th>
     <tr>
@@ -580,7 +580,7 @@ For example, if there is a requirement for 1000 requests per second, it is more 
 
 Additionally, it is generally advisable to utilize multiple smaller instances rather than a single larger instance. This approach mitigates the impact of instance failures, as a single large instance would render the entire application unavailable until it becomes operational again, whereas several smaller instances ensure the availability of the other instances during the downtime of a faulty instance.
 <table>
- <th colspan="5"><font size="+2">Tier efficiency</font></th>
+ <th colspan="5"><font size="+1">Tier efficiency</font></th>
 <tr>
   <td><b>Tier</b></td>
   <td><b>OS</b></td>
