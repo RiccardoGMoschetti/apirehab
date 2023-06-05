@@ -403,8 +403,8 @@ They offer superior performance compared to the v2 counterparts and allow for lo
 ### Linux tiers
 
 <table>
-   <th colspan="4">
-      Maximum requests per second
+   <th colspan="4"> <font size="+2">
+      Maximum requests per second</font>
    </th>
     <tr>
       <td>
