@@ -3,22 +3,23 @@ layout: default
 title: Azure Functions Performance
 nav_order: 2
 ---
-# Performance of .NET workloads on Azure Functions
+# Performance of Azure Functions with .NET workloads
 The scope of this API performance test was centered around two key technologies:
 - Azure Functions (refer to the developer guide available [here](https://learn.microsoft.com/en-us/azure/azure-functions/){:target="_blank" rel="noopener"})
 - Microsoft .NET core APIs (start your exploration [here](https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api){:target="_blank" rel="noopener"})
 
 ## Key Findings
 In our investigation, we discovered that 
-- Higher-cost Azure Functions offer performance that exceeds the proportional increase in their price. For example, an S1 app function (63 euros per month at the end of May 2023) can accommodate 10 requests per second with good performance (the 95% percentile responds in <100 ms), while a P3v3 Windows function (894 euros per month) has the capability to handle up to 1250 requests per second; with the latter tier, you get 125 times the performance for 14 times the price.  In the [Final Considerations](#finalConsiderations) paragraph, we offer a "cost efficiency" analysis as a summary for this reasoning.
-- Linux functions are less efficient in running .NET workloads compared to Windows functions. 
+- Higher-cost Azure Functions offer performance that exceeds the proportional increase in their price. For example, an S1 app function (63 euros per month at the end of May 2023) can accommodate 10 requests per second with good performance (the 95% percentile responds in <100 ms), while a P3v3 Windows function (894 euros per month) has the capability to handle up to 1250 requests per second. With the latter tier, you get 125 times the performance for 14 times the price.  
+In the [Final Considerations](#finalConsiderations) paragraph, we offer a "cost efficiency" index as a summary for this reasoning.
+- With the same hardware, Linux functions are **less** efficient in running .NET workloads compared to Windows functions. 
 - However, Linux functions offer cost advantages, particularly in the P\*v3 tier, making them a viable and favorable choice in the use cases when you can split your workload in more smaller app function instances. 
 
 To gain more insights into the outcomes across different operating systems and tiers, please refer to the relevant section [below](#finalConsiderations).
 
 ## Measurement Approach
 To evaluate performance, we deployed a .NET 7 isolated process API on most Azure Function tiers. This API was intentionally designed to perform the bare minimum, as the objective was to assess infrastructure rather than code.  
-The tested API, named "GetFromCache", followed these steps:
+The tested API performs these steps:
 1. Retrieval of a random string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Function.
 2. Creation of an in-memory object containing the retrieved string, a GUID, and another random string.
 3. Serialization of the object and generation of a response containing the serialized object.
@@ -28,14 +29,14 @@ The tested API, named "GetFromCache", followed these steps:
 It is worth noting that typical APIs are unlikely to perform fewer operations than this; the question arises as to whether they should actually perform *considerably more*.
 
 ## Implications of the Results
-Although your software and dependencies may differ from the ones tested here, this exercise provides an upper limit benchmark that even flawless software cannot surpass. We believe this data can assist you in making informed decisions.
+Although your software and dependencies may differ from the ones tested here, this exercise provides an upper limit benchmark that even flawless software cannot surpass. We believe this data can assist you in making informed decisions about the Functions tier you need.
 
 ## Load tool used
 For generating a substantial number of concurrent calls, we utilized <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a reliable and straightforward multi-platform tool, in version 12.8.3.  
 The client machine responsible for generating the load was an Ubuntu 22.04 VM with 64 GB RAM and 8 CPUs, situated within the same network as the functions being tested.
 
 ## The infrastructure / architecture 
-Our testing encompassed all production-ready Azure Function tiers available in the West Europe region, covering both Linux and Windows operating systems. The Azure functions were hosted in the same data center and virtual network as the VMs and the Redis Cache, utilizing private endpoints to ensure minimal network latency. The provided architectural diagram illustrates the solution's structure. 
+Our testing encompassed most production-ready Azure Function tiers available in the West Europe region, covering both Linux and Windows operating systems. The Azure functions were hosted in the same data center and virtual network as the VMs and the Redis Cache, utilizing private endpoints to ensure minimal network latency. The provided architectural diagram illustrates the solution's structure. 
 <img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png?raw=true"/>.  
 You can obtain the original diagrams.net (formerly draw.io) drawing <a href="/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio" download>from this location</a>.
 
@@ -43,7 +44,7 @@ You can obtain the original diagrams.net (formerly draw.io) drawing <a href="/do
 Vegeta provides you with the following information for each performance test: minimum value, mean, 50th percentile (considered more informative than the mean due to its lower susceptibility to outliers), 90th percentile, 95th, 99th, and maximum value. For our analysis, we subjected the functions to continuous stress for ten minutes.  
 We categorized the performance as follows:
 
-- <span style="color:darkGreen; font-weight:bold">Good</span> performance: In this category, 95% of API calls are completed in less than 100ms, indicating that only a small percentage of API calls may experience difficult response times.
+- <span style="color:darkGreen; font-weight:bold">Good</span> performance: In this category, 95% of API calls are completed in less than 100ms, indicating that only a small percentage of API calls may experience unsatisfactory response times.
 - <span style="color:darkOrange; font-weight:bold">Mediocre</span>: Here, 95% of API calls are completed in less than 1 second, indicating that a small portion of API calls may be slow.
 - <span style="color:darkRed; font-weight:bold">Barely working</span>: Although the server remains functional, each call may take up to 30 seconds to complete.
 
@@ -51,7 +52,9 @@ It is important to note that we did not include the B-tier app functions in this
 
 <a id="theResults"></a>
 # Results
+
 ## "S" tiers
+
 ### Linux tiers
 
 <table>
@@ -208,7 +211,7 @@ It is important to note that we did not include the B-tier app functions in this
    </tr>
 </table>
 
-### Prices for S* tiers
+## Prices for S* tiers
 
 As of May 2023, the following are the monthly prices for the different tiers and operating systems:
 
@@ -381,7 +384,7 @@ These tiers represent the second generation of "premium" app services. They offe
    </tr>
 </table>
 
-### Prices for P\*v2 tiers
+## Prices for P\*v2 tiers
 
 |*plan*  |CPUs|RAM GB|Storage|€/month|€/month|
 |        |    |      |       | Linux |Windows|
@@ -553,7 +556,7 @@ They offer superior performance compared to the v2 counterparts and allow for lo
    </tr>
 </table>
 
-### Prices for P\*v3 tiers
+## Prices for P\*v3 tiers
 
 |*Tier* |CPUs| RAM |Storage|As you go|3 years|As you go |3 years |
 |       |    |     |       | Linux   | Linux |Windows   |Windows |
@@ -563,17 +566,22 @@ They offer superior performance compared to the v2 counterparts and allow for lo
 | *P3v3*|  8 |32 GB| 250 GB|      471|    212|      894 |    537 |
 
 
-You can see that Linux workloads definitely less expensive than the Windows. The difference is more remarkable than in the other tiers.  
+You can see that Linux workloads are definitely less expensive than the Windows counterparts. The difference is more remarkable than in the other tiers.  
 If there is a need to accommodate a substantial volume of requests and there is a willingness to commit for a duration of one or three years, opting for a Linux P*v3 app service emerges as a highly evident decision.
 
 <a id="finalConsiderations"></a>
+
 # Final considerations
+
 Although Windows tiers demonstrate superior performance compared to Linux tiers, the latter exhibit a more favorable cost-effectiveness ratio.  
-The *cost efficiency* value we present below represents the relationship between the maximum number of requests per second (ensuring a response time within the 95th percentile of less than 100 ms) and the monthly cost. A higher cost efficiency implies greater value for the investment. For example, if there is a requirement for 1000 requests per second, it is more advantageous to opt for four P1v3 Linux tiers, each capable of serving 250 requests per second and resulting in a monthly cost of 472 euros (118 euros per tier x 4), instead of selecting a single P3v3 tier, which can handle up to 1250 requests per second but incurs a monthly cost of 894 euros.  
+The *cost efficiency* index we present below represents the relationship between the maximum number of requests per second (ensuring a response time within the 95th percentile of less than 100 ms) and the monthly cost. A higher cost efficiency implies greater value for the investment.  
+
+For example, if there is a requirement for 1000 requests per second, it is more advantageous to opt for 4  P1v3 Linux tiers, each capable of serving 250 requests per second and resulting in a monthly cost of 472 euros (118 euros per tier x 4), instead of selecting a single P3v3 tier, which can handle up to 1250 requests per second but incurs a monthly cost of 894 euros.  
+
 Additionally, it is generally advisable to utilize multiple smaller instances rather than a single larger instance. This approach mitigates the impact of instance failures, as a single large instance would render the entire application unavailable until it becomes operational again, whereas several smaller instances ensure the availability of the other instances during the downtime of a faulty instance.
 <table>
  <th colspan="5">Tier efficiency</th>
- <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">OS</span></td><td><span style="color:darkOrange; font-weight:bold">maxium req/s for Good Performance</span></td><td>Cost per month</td><td>Cost efficiency</td></tr>
+ <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">OS</span></td><td><span style="color:darkOrange; font-weight:bold">maxium req/s for Good Performance</span></td><td>Cost per month</td><td>Cost efficiency index</td></tr>
    <tr><td>P2v3</td><td>Linux</td><td>750</td><td>235</td><td><b>3,19 (best)</b></td></tr>
    <tr><td>P1v3</td><td>Linux</td><td>250</td><td>118</td><td><b>2,12</b></td></tr>
    <tr><td>P2v3</td><td>Windows</td><td>900</td><td>447</td><td><b>2,01</b></td></tr>
