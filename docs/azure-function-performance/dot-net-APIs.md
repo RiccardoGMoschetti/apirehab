@@ -582,11 +582,11 @@ Additionally, it is generally advisable to utilize multiple smaller instances ra
 <table>
  <th colspan="5">Tier efficiency</th>
 <tr>
-  <td>Tier</td>
-  <td>OS</td>
+  <td><b>Tier</b></td>
+  <td><b>OS</b></td>
   <td><b>Cost efficiency index</b></td>
-  <td>maximum req/s for Good Performance</td>
-  <td>Cost per month</td>
+  <td><b>Maximum req/s for Good Performance</b></td>
+  <td><b>Cost per month</b></td>
 </tr>
 <tr>
   <td>P2v3</td>
