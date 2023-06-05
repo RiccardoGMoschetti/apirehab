@@ -44,8 +44,8 @@ You can obtain the original diagrams.net (formerly draw.io) drawing <a href="/do
 Vegeta provides you with the following information for each performance test: minimum value, mean, 50th percentile (considered more informative than the mean due to its lower susceptibility to outliers), 90th percentile, 95th, 99th, and maximum value. For our analysis, we subjected the functions to continuous stress for ten minutes.  
 We categorized the performance as follows:
 
-- <span style="color:darkGreen; font-weight:bold">Good</span> performance: In this category, 95% of API calls are completed in less than 100ms, indicating that only a small percentage of API calls may experience unsatisfactory response times.
-- <span style="color:darkOrange; font-weight:bold">Mediocre</span>: Here, 95% of API calls are completed in less than 1 second, indicating that a small portion of API calls may be slow.
+- <span style="color:darkGreen; font-weight:bold">Good</span> performance: In this category, 95% of API calls are completed in less than 100ms, indicating that only 5%  of API calls may experience unsatisfactory response times.
+- <span style="color:darkOrange; font-weight:bold">Mediocre</span>: Here, 95% of API calls are completed in less than 1 second, indicating that a  portion of API calls may be downright slow.
 - <span style="color:darkRed; font-weight:bold">Barely working</span>: Although the server remains functional, each call may take up to 30 seconds to complete.
 
 It is important to note that we did not include the B-tier app functions in this test, as Microsoft does not categorize them as production-ready.
@@ -581,23 +581,138 @@ For example, if there is a requirement for 1000 requests per second, it is more 
 Additionally, it is generally advisable to utilize multiple smaller instances rather than a single larger instance. This approach mitigates the impact of instance failures, as a single large instance would render the entire application unavailable until it becomes operational again, whereas several smaller instances ensure the availability of the other instances during the downtime of a faulty instance.
 <table>
  <th colspan="5">Tier efficiency</th>
- <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">OS</span></td><td><span style="color:darkOrange; font-weight:bold">maxium req/s for Good Performance</span></td><td>Cost per month</td><td>Cost efficiency index</td></tr>
-   <tr><td>P2v3</td><td>Linux</td><td>750</td><td>235</td><td><b>3,19 (best)</b></td></tr>
-   <tr><td>P1v3</td><td>Linux</td><td>250</td><td>118</td><td><b>2,12</b></td></tr>
-   <tr><td>P2v3</td><td>Windows</td><td>900</td><td>447</td><td><b>2,01</b></td></tr>
-   <tr><td>P3v2</td><td>Linux</td><td>600</td><td>305</td><td><b>1,97</b></td></tr>
-   <tr><td>P3v3</td><td>Linux</td><td>900</td><td>471</td><td><b>1,91</b></td></tr>
-   <tr><td>P2v2</td><td>Linux</td><td>250</td><td>152</td><td><b>1,64</b></td></tr>
-   <tr><td>P3v2</td><td>Windows</td><td>800</td><td>529</td><td><b>1,51</b></td></tr>
-   <tr><td>P1v3</td><td>Windows</td><td>325</td><td>223</td><td><b>1,46</b></td></tr>
-   <tr><td>P3v3</td><td>Windows</td><td>1250</td><td>894</td><td><b>1,4</b></td></tr>
-   <tr><td>P2v2</td><td>Windows</td><td>325</td><td>264</td><td><b>1,23</b></td></tr>
-   <tr><td>S3</td><td>Windows</td><td>325</td><td>264</td><td><b>1,23</b></td></tr>
-   <tr><td>S3</td><td>Linux</td><td>200</td><td>251</td><td><b>0,8</b></td></tr>
-   <tr><td>S2</td><td>Windows</td><td>100</td><td>132</td><td><b>0,76</b></td></tr>
-   <tr><td>P1v2</td><td>Linux</td><td>50</td><td>76</td><td><b>0,66</b></td></tr>
-   <tr><td>P1v2</td><td>Windows</td><td>70</td><td>132</td><td><b>0,53</b></td></tr>
-   <tr><td>S2</td><td>Linux</td><td>50</td><td>126</td><td><b>0,4</b></td></tr>
-   <tr><td>S1</td><td>Linux</td><td>10</td><td>63</td><td><b>0,16</b></td></tr>
-   <tr><td>S1</td><td>Windows</td><td>10</td><td>66</td><td><b>0,15</b></td></tr>
+<tr>
+  <td>Tier</td>
+  <td><span style="color:darkGreen; font-weight:bold">OS</span></td>
+  <td>Cost efficiency index</td>
+  <td><span style="color:darkOrange; font-weight:bold">maxium req/s for Good Performance</span></td>
+  <td>Cost per month</td>
+</tr>
+<tr>
+  <td>P2v3</td>
+  <td>Linux</td>
+  <td><b>3,19 (best)</b></td>
+  <td>750</td>
+  <td>235</td>
+</tr>
+<tr>
+  <td>P1v3</td>
+  <td>Linux</td>
+  <td><b>2,12</b></td>
+  <td>250</td>
+  <td>118</td>
+</tr>
+<tr>
+  <td>P2v3</td>
+  <td>Windows</td>
+  <td><b>2,01</b></td>
+  <td>900</td>
+  <td>447</td>
+</tr>
+<tr>
+  <td>P3v2</td>
+  <td>Linux</td>
+  <td><b>1,97</b></td>
+  <td>600</td>
+  <td>305</td>
+</tr>
+<tr>
+  <td>P3v3</td>
+  <td>Linux</td>
+  <td><b>1,91</b></td>
+  <td>900</td>
+  <td>471</td>
+</tr>
+<tr>
+  <td>P2v2</td>
+  <td>Linux</td>
+  <td><b>1,64</b></td>
+  <td>250</td>
+  <td>152</td>
+</tr>
+<tr>
+  <td>P3v2</td>
+  <td>Windows</td>
+  <td><b>1,51</b></td>
+  <td>800</td>
+  <td>529</td>
+</tr>
+<tr>
+  <td>P1v3</td>
+  <td>Windows</td>
+  <td><b>1,46</b></td>
+  <td>325</td>
+  <td>223</td>
+</tr>
+<tr>
+  <td>P3v3</td>
+  <td>Windows</td>
+  <td><b>1,4</b></td>
+  <td>1250</td>
+  <td>894</td>
+</tr>
+<tr>
+  <td>P2v2</td>
+  <td>Windows</td>
+  <td><b>1,23</b></td>
+  <td>325</td>
+  <td>264</td>
+</tr>
+<tr>
+  <td>S3</td>
+  <td>Windows</td>
+  <td><b>1,23</b></td>
+  <td>325</td>
+  <td>264</td>
+</tr>
+<tr>
+  <td>S3</td>
+  <td>Linux</td>
+  <td><b>0,8</b></td>
+  <td>200</td>
+  <td>251</td>
+</tr>
+<tr>
+  <td>S2</td>
+  <td>Windows</td>
+  <td><b>0,76</b></td>
+  <td>100</td>
+  <td>132</td>
+</tr>
+<tr>
+  <td>P1v2</td>
+  <td>Linux</td>
+  <td><b>0,66</b></td>
+  <td>50</td>
+  <td>76</td>
+</tr>
+<tr>
+  <td>P1v2</td>
+  <td>Windows</td>
+  <td><b>0,53</b></td>
+  <td>70</td>
+  <td>132</td>
+</tr>
+<tr>
+  <td>S2</td>
+  <td>Linux</td>
+  <td><b>0,4</b></td>
+  <td>50</td>
+  <td>126</td>
+</tr>
+<tr>
+  <td>S1</td>
+  <td>Linux</td>
+  <td><b>0,16</b></td>
+  <td>10</td>
+  <td>63</td>
+</tr>
+<tr>
+  <td>S1</td>
+  <td>Windows</td>
+  <td><b>0,15</b></td>
+  <td>10</td>
+  <td>66</td>
+</tr>
+
 </table>
