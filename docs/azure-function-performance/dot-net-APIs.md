@@ -583,9 +583,9 @@ Additionally, it is generally advisable to utilize multiple smaller instances ra
  <th colspan="5">Tier efficiency</th>
 <tr>
   <td>Tier</td>
-  <td><span style="color:darkGreen; font-weight:bold">OS</span></td>
-  <td>Cost efficiency index</td>
-  <td><span style="color:darkOrange; font-weight:bold">maxium req/s for Good Performance</span></td>
+  <td>OS</td>
+  <td><b>Cost efficiency index</b></td>
+  <td>maximum req/s for Good Performance</td>
   <td>Cost per month</td>
 </tr>
 <tr>
