@@ -2,7 +2,10 @@ title: API rehab
 description: A performance extravaganza for the API enthusiast
 theme: just-the-docs
 
-url: https://RiccardoGMoschetti.github.io/apirehab
+url: https://RiccardoGMoschetti.github.io/apirehabù
+
+logo: /images/logo.png
+
 
 aux_links:
   Template Repository: https://github.com/RiccardoGMoschetti/apirehab
