@@ -10,15 +10,15 @@ The scope of this API performance test was centered around two key technologies:
 
 ## Key Findings
 In our investigation, we discovered that 
-- Higher-cost Azure Functions offer performance that exceeds the proportional increase in their price. For example, an S1 app function (63 euros per month at the end of May 2023) can accommodate 10 requests per second with good performance (the 95% percentile responds in <100 ms), while a P3v3 Windows function (894 euros per month) has the capability to handle up to 1250 requests per second. With the latter tier, you get 125 times the performance for 14 times the price.  
+- Higher-cost Azure Functions offer performance that exceeds the proportional increase in their price. For example, a Linux S1 app function (63 euros per month in the West Europe DC at the end of May 2023) can accommodate 10 requests per second with good results (the 95% percentile responds in <100 ms), while a P3v3 Windows function (894 euros per month) has the capability to handle up to 1250 requests per second. So, **at 14 times the price, you get 125 times the performance.**
 In the [Final Considerations](#finalConsiderations) paragraph, we offer a "cost efficiency" index as a summary for this reasoning.
-- With the same hardware, Linux functions are **less** efficient in running .NET workloads compared to Windows functions. 
+- With the same hardware, **Linux functions are less efficient** at running .NET workloads compared to Windows functions. 
 - However, Linux functions offer cost advantages, particularly in the P\*v3 tier, making them a viable and favorable choice in the use cases when you can split your workload in more smaller app function instances. 
 
 To gain more insights into the outcomes across different operating systems and tiers, please refer to the relevant section [below](#finalConsiderations).
 
 ## Measurement Approach
-To evaluate performance, we deployed a .NET 7 isolated process API on most Azure Function tiers. This API was intentionally designed to perform the bare minimum, as the objective was to assess infrastructure rather than code.  
+To evaluate performance, we deployed a .NET 7 isolated process API on most Azure Function tiers. This API was intentionally designed to perform very little work, as the objective was to assess infrastructure rather than code.  
 The tested API performs these steps:
 1. Retrieval of a random string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Function.
 2. Creation of an in-memory object containing the retrieved string, a GUID, and another random string.
@@ -29,7 +29,7 @@ The tested API performs these steps:
 It is worth noting that typical APIs are unlikely to perform fewer operations than this; the question arises as to whether they should actually perform *considerably more*.
 
 ## Implications of the Results
-Although your software and dependencies may differ from the ones tested here, this exercise provides an upper limit benchmark that even flawless software cannot surpass. We believe this data can assist you in making informed decisions about the Functions tier you need.
+Although your software and dependencies may differ from the ones tested here, this exercise provides an upper limit benchmark that even flawless software cannot surpass. We believe this data can assist you in making informed decisions about the Azure Functions tier you need.
 
 ## Load tool used
 For generating a substantial number of concurrent calls, we utilized <a href="https://github.com/tsenart/vegeta">Vegeta</a>, a reliable and straightforward multi-platform tool, in version 12.8.3.  
@@ -58,9 +58,7 @@ It is important to note that we did not include the B-tier app functions in this
 ### Linux tiers
 
 <table>
-   <th colspan="4">
-      Maximum requests per second
-   </th>
+   <th colspan="4"><font size="+1">Maximum requests per second</font></th>
    <tr>
       <td>
          Tier
@@ -136,9 +134,7 @@ It is important to note that we did not include the B-tier app functions in this
 ## Windows tiers
 
 <table>
-   <th colspan="4">
-      Maximum requests per second
-   </th>
+   <th colspan="4"><font size="+1">Maximum requests per second</font></th>
    <tr>
       <td>
          Tier
@@ -231,9 +227,7 @@ These tiers represent the second generation of "premium" app services. They offe
 ### Linux tiers
 
 <table>
-   <th colspan="4">
-      Maximum requests per second
-   </th>
+   <th colspan="4"><font size="+1">Maximum requests per second</font></th> 
     <tr>
       <td>
          Tier
@@ -309,9 +303,7 @@ These tiers represent the second generation of "premium" app services. They offe
 ### Windows tiers
 
 <table>
-   <th colspan="4">
-      Maximum requests per second
-   </th>
+   <th colspan="4"><font size="+1">Maximum requests per second</font></th>
  <tr>
       <td>
          Tier
@@ -481,9 +473,7 @@ They offer superior performance compared to the v2 counterparts and allow for lo
 ### Windows tiers
 
 <table>
-   <th colspan="4">
-      Maximum requests per second
-   </th>
+   <th colspan="4"><font size="+1">Maximum requests per second</font></th>
  <tr>
       <td>
          Tier
@@ -568,13 +558,12 @@ They offer superior performance compared to the v2 counterparts and allow for lo
 
 You can see that Linux workloads are definitely less expensive than the Windows counterparts. The difference is more remarkable than in the other tiers.  
 If there is a need to accommodate a substantial volume of requests and there is a willingness to commit for a duration of one or three years, opting for a Linux P*v3 app service emerges as a highly evident decision.
-
 <a id="finalConsiderations"></a>
-
 # Final considerations
 
-Although Windows tiers demonstrate superior performance compared to Linux tiers, the latter exhibit a more favorable cost-effectiveness ratio.  
-The *cost efficiency* index we present below represents the relationship between the maximum number of requests per second (ensuring a response time within the 95th percentile of less than 100 ms) and the monthly cost. A higher cost efficiency implies greater value for the investment.  
+Although Windows tiers demonstrate superior performance compared to Linux tiers, the latter exhibit a more favorable cost-effectiveness ratio.
+
+The *cost efficiency* index we present below represents the relationship between the maximum number of requests per second (ensuring a response time within the 95th percentile of less than 100 ms) and the monthly cost (not considering **reservations**, or long-term commitment discounts). A higher cost efficiency implies greater value for the investment.  
 
 For example, if there is a requirement for 1000 requests per second, it is more advantageous to opt for 4  P1v3 Linux tiers, each capable of serving 250 requests per second and resulting in a monthly cost of 472 euros (118 euros per tier x 4), instead of selecting a single P3v3 tier, which can handle up to 1250 requests per second but incurs a monthly cost of 894 euros.  
 
