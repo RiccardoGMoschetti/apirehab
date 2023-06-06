@@ -711,8 +711,8 @@ Additionally, it is generally advisable to utilize multiple smaller instances ra
 <script>
    
     var disqus_config = function () {
-    this.page.url = "https://www.api.rehab";  
-    this.page.identifier = "dotNetOnAzureFunctions"
+    this.page.url = "https://www.api.rehab/docs/azure-function-performance/dot-net-APIs.html";  
+    this.page.identifier = "dotNetOnAzureFunctions";
     };
    
     (function() { // DON'T EDIT BELOW THIS LINE
