@@ -709,13 +709,12 @@ Additionally, it is generally advisable to utilize multiple smaller instances ra
 {% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
-   
     var disqus_config = function () {
     this.page.url = 'https://www.api.rehab/docs/azure-function-performance/dot-net-APIs.html';
     this.page.identifier = 'dotNetOnAzureFunctions';
     };
    
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function() { 
     var d = document, s = d.createElement('script');
     s.src = 'https://www-api-rehab.disqus.com/embed.js';
     s.setAttribute('data-timestamp', +new Date());
