@@ -713,7 +713,6 @@ Additionally, it is generally advisable to utilize multiple smaller instances ra
     this.page.url = 'https://www.api.rehab/docs/azure-function-performance/dot-net-APIs.html';
     this.page.identifier = 'dotNetOnAzureFunctions';
     };
-   
     (function() { 
     var d = document, s = d.createElement('script');
     s.src = 'https://www-api-rehab.disqus.com/embed.js';
