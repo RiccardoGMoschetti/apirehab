@@ -2,6 +2,7 @@
 layout: default
 title: Azure Functions Performance
 nav_order: 2
+comments: true
 ---
 # Performance of Azure Functions with .NET workloads
 The scope of this API performance test was centered around two key technologies:
@@ -705,3 +706,22 @@ Additionally, it is generally advisable to utilize multiple smaller instances ra
 </tr>
 
 </table>
+{% if page.comments %}
+   <div id="disqus_thread"></div>
+<script>
+
+    
+    var disqus_config = function () {
+    this.page.url = "www.api.rehab";  
+    this.page.identifier = "dotNetOnAzureFunctions"
+    };
+   
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://www-api-rehab.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
