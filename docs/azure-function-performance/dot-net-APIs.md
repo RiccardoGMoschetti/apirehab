@@ -709,10 +709,9 @@ Additionally, it is generally advisable to utilize multiple smaller instances ra
 {% if page.comments %}
    <div id="disqus_thread"></div>
 <script>
-
-    
+   
     var disqus_config = function () {
-    this.page.url = "www.api.rehab";  
+    this.page.url = "https://www.api.rehab";  
     this.page.identifier = "dotNetOnAzureFunctions"
     };
    
