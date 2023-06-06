@@ -60,152 +60,22 @@ It is important to note that we did not include the B-tier app functions in this
 
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
-   <tr>
-      <td>
-         Tier
-      </td>
-      <td>
-         <span style="color:darkGreen;font-weight:bold">Good Performance</span>
-      </td>
-      <td>
-         <span style="color:darkOrange;font-weight:bold">Mediocre Performance</span>
-      </td>
-      <td>
-         <span style="color:darkRed;font-weight:bold">Barely working</span>
-      </td>
-   </tr>
-   <tr>
-      <td>
-       &nbsp;
-      </td>
-      <td>
-         95th perc. < 100ms
-      </td>
-      <td>
-         95th perc. < 1000ms
-      </td>
-      <td>
-         (any 95th perc)
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Linux <em>S1</em>
-      </td>
-      <td>
-         10
-      </td>
-      <td>
-         30
-      </td>
-      <td>
-         50
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Linux <em>S2</em>
-      </td>
-      <td>
-         50
-      </td>
-      <td>
-         100
-      </td>
-      <td>
-         150
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Linux <em>S3</em>
-      </td>
-      <td>
-         200
-      </td>
-      <td>
-         300
-      </td>
-      <td>
-         400
-      </td>
-   </tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen;font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange;font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed;font-weight:bold">Barely working</span></td></tr>
+   <tr><td>&nbsp;</td><td>95th perc. &lt; 100ms</td><td>95th perc. &lt; 1000ms</td><td>(any 95th perc)</td></tr>
+   <tr><td>Linux <em>S1</em></td><td>10</td><td>30</td><td>50</td></tr>
+   <tr><td>Linux <em>S2</em></td><td>50</td><td>100</td><td>150</td></tr>
+   <tr><td>Linux <em>S3</em></td><td>200</td><td>300</td><td>400</td></tr>
 </table>
 
 ## Windows tiers
 
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
-   <tr>
-      <td>
-         Tier
-      </td>
-      <td>
-         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
-      </td>
-      <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
-      </td>
-      <td>
-         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
-      </td>
-   </tr>
-   <tr>
-      <td>
-       &nbsp;
-      </td>
-      <td>
-           95th perc. &lt; 100ms
-      </td>
-      <td>
-            95th perc. < 1000ms
-      </td>
-      <td>
-         (any 95th perc)
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Windows <em>S1</em>
-      </td>
-      <td>
-         10
-      </td>
-      <td>
-         50
-      </td>
-      <td>
-         70
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Windows <em>S2</em>
-      </td>
-      <td>
-        100
-      </td>
-      <td>
-         150
-      </td>
-      <td>
-         175
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Windows <em>S3</em>
-      </td>
-      <td>
-         325
-      </td>
-      <td>
-         350
-      </td>
-      <td>
-         400
-      </td>
-   </tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>&nbsp;</td><td>95th perc. &lt; 100ms</td><td>95th perc. &lt; 1000ms</td><td>(any 95th perc)</td></tr>
+   <tr><td>Windows <em>S1</em></td><td>10</td><td>50</td><td>70</td></tr>
+   <tr><td>Windows <em>S2</em></td><td>100</td><td>150</td><td>175</td></tr>
+   <tr><td>Windows <em>S3</em></td><td>325</td><td>350</td><td>400</td></tr>
 </table>
 
 ## Prices for S* tiers
@@ -228,153 +98,22 @@ These tiers represent the second generation of "premium" app services. They offe
 ### Linux tiers
 
 <table>
-   <th colspan="4"><font size="+1">Maximum requests per second</font></th> 
-    <tr>
-      <td>
-         Tier
-      </td>
-      <td>
-         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
-      </td>
-      <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
-      </td>
-      <td>
-         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
-      </td>
-   </tr>
-   <tr>
-      <td>
-       &nbsp;
-      </td>
-      <td>
-         95th perc. < 100ms
-      </td>
-      <td>
-         95th perc. < 1000ms
-      </td>
-      <td>
-         (any 95th perc)
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Linux <em>P1v2</em>
-      </td>
-      <td>
-         50
-      </td>
-      <td>
-         75
-      </td>
-      <td>
-        150
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Linux <em>P2v2</em>
-      </td>
-      <td>
-         250
-      </td>
-      <td>
-         350
-      </td>
-      <td>
-         400
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Linux <em>P3v2</em>
-      </td>
-      <td>
-         600
-      </td>
-      <td>
-         750
-      </td>
-      <td>
-         850
-      </td>
-   </tr>
+   <th colspan="4"><font size="+1">Maximum requests per second</font></th>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>&nbsp;</td><td>95th perc. < 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
+   <tr><td>Linux <em>P1v2</em></td><td>50</td><td>75</td><td>150</td></tr>
+   <tr><td>Linux <em>P2v2</em></td><td>250</td><td>350</td><td>400</td></tr>
+   <tr><td>Linux <em>P3v2</em></td><td>600</td><td>750</td><td>850</td></tr>
 </table>
 
 ### Windows tiers
-
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
- <tr>
-      <td>
-         Tier
-      </td>
-      <td>
-         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
-      </td>
-      <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
-      </td>
-      <td>
-         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
-      </td>
-   </tr>
-   <tr>
-      <td>
-       &nbsp;
-      </td>
-      <td>
-           95th perc. &lt; 100ms
-      </td>
-      <td>
-            95th perc. < 1000ms
-      </td>
-      <td>
-         (any 95th perc)
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Windows <em>P1v2</em>
-      </td>
-      <td>
-         70
-      </td>
-      <td>
-         175
-      </td>
-      <td>
-         200
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Windows <em>P2v2</em>
-      </td>
-      <td>
-        325
-      </td>
-      <td>
-         475
-      </td>
-      <td>
-         475
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Windows <em>P3v2</em>
-      </td>
-      <td>
-         800
-      </td>
-      <td>
-         850
-      </td>
-      <td>
-         900
-      </td>
-   </tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>&nbsp;</td><td>95th perc. &lt; 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
+   <tr><td>Windows <em>P1v2</em></td><td>70</td><td>175</td><td>200</td></tr>
+   <tr><td>Windows <em>P2v2</em></td><td>325</td><td>475</td><td>475</td></tr>
+   <tr><td>Windows <em>P3v2</em></td><td>800</td><td>850</td><td>900</td></tr>
 </table>
 
 ## Prices for P\*v2 tiers
@@ -396,155 +135,23 @@ They offer superior performance compared to the v2 counterparts and allow for lo
 ### Linux tiers
 
 <table>
-   <th colspan="4"> <font size="+1">
-      Maximum requests per second</font>
-   </th>
-    <tr>
-      <td>
-         Tier
-      </td>
-      <td>
-         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
-      </td>
-      <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
-      </td>
-      <td>
-         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
-      </td>
-   </tr>
-   <tr>
-      <td>
-       &nbsp;
-      </td>
-      <td>
-         95th perc. < 100ms
-      </td>
-      <td>
-         95th perc. < 1000ms
-      </td>
-      <td>
-         (any 95th perc)
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Linux <em>P1v3</em>
-      </td>
-      <td>
-         250
-      </td>
-      <td>
-         350
-      </td>
-      <td>
-        300
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Linux <em>P2v3</em>
-      </td>
-      <td>
-         250
-      </td>
-      <td>
-         350
-      </td>
-      <td>
-         400
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Linux <em>P3v3</em>
-      </td>
-      <td>
-         750
-      </td>
-      <td>
-         850      
-      </td>
-      <td>
-         1000
-      </td>
-   </tr>
+   <th colspan="4"> <font size="+1">Maximum requests per second</font></th>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>&nbsp;</td><td>95th perc. < 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
+   <tr><td>Linux <em>P1v3</em></td><td>250</td><td>350</td><td>300</td></tr>
+   <tr><td>Linux <em>P2v3</em></td><td>250</td><td>350</td><td>400</td></tr>
+   <tr><td>Linux <em>P3v3</em></td><td>750</td><td>850</td><td>1000</td></tr>
 </table>
 
 ### Windows tiers
 
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
- <tr>
-      <td>
-         Tier
-      </td>
-      <td>
-         <span style="color:darkGreen; font-weight:bold">Good Performance</span> 
-      </td>
-      <td>
-         <span style="color:darkOrange; font-weight:bold">Mediocre Performance</span>
-      </td>
-      <td>
-         <span style="color:darkRed; font-weight:bold">Bad Performance</span>
-      </td>
-   </tr>
-   <tr>
-      <td>
-       &nbsp;
-      </td>
-      <td>
-           95th perc. &lt; 100ms
-      </td>
-      <td>
-            95th perc. < 1000ms
-      </td>
-      <td>
-         (any 95th perc)
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Windows <em>P1v3</em>
-      </td>
-      <td>
-        325
-      </td>
-      <td>
-         425
-      </td>
-      <td>
-         450
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Windows <em>P2v3</em>
-      </td>
-      <td>
-        900
-      </td>
-      <td>
-         1000
-      </td>
-      <td>
-         1050
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Windows <em>P3v2</em>
-      </td>
-      <td>
-         1250
-      </td>
-      <td>
-         1250
-      </td>
-      <td>
-         1250
-      </td>
-   </tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>&nbsp;</td><td>95th perc. &lt; 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
+   <tr><td>Windows <em>P1v3</em></td><td>325</td><td>425</td><td>450</td></tr>
+   <tr><td>Windows <em>P2v3</em></td><td>900</td><td>1000</td><td>1050</td></tr>
+   <tr><td>Windows <em>P3v2</em></td><td>1250</td><td>1250</td><td>1250</td></tr>
 </table>
 
 ## Prices for P\*v3 tiers
@@ -570,142 +177,28 @@ For example, if there is a requirement for 1000 requests per second, it is more 
 
 Additionally, it is generally advisable to utilize multiple smaller instances rather than a single larger instance. This approach mitigates the impact of instance failures, as a single large instance would render the entire application unavailable until it becomes operational again, whereas several smaller instances ensure the availability of the other instances during the downtime of a faulty instance.
 <table>
- <th colspan="5"><font size="+1">Tier efficiency</font></th>
-<tr>
-  <td><b>Tier</b></td>
-  <td><b>OS</b></td>
-  <td><b>Cost efficiency index</b></td>
-  <td><b>Maximum req/s for Good Performance</b></td>
-  <td><b>Cost per month</b></td>
-</tr>
-<tr>
-  <td>P2v3</td>
-  <td>Linux</td>
-  <td><b>3,19 (best)</b></td>
-  <td>750</td>
-  <td>235</td>
-</tr>
-<tr>
-  <td>P1v3</td>
-  <td>Linux</td>
-  <td><b>2,12</b></td>
-  <td>250</td>
-  <td>118</td>
-</tr>
-<tr>
-  <td>P2v3</td>
-  <td>Windows</td>
-  <td><b>2,01</b></td>
-  <td>900</td>
-  <td>447</td>
-</tr>
-<tr>
-  <td>P3v2</td>
-  <td>Linux</td>
-  <td><b>1,97</b></td>
-  <td>600</td>
-  <td>305</td>
-</tr>
-<tr>
-  <td>P3v3</td>
-  <td>Linux</td>
-  <td><b>1,91</b></td>
-  <td>900</td>
-  <td>471</td>
-</tr>
-<tr>
-  <td>P2v2</td>
-  <td>Linux</td>
-  <td><b>1,64</b></td>
-  <td>250</td>
-  <td>152</td>
-</tr>
-<tr>
-  <td>P3v2</td>
-  <td>Windows</td>
-  <td><b>1,51</b></td>
-  <td>800</td>
-  <td>529</td>
-</tr>
-<tr>
-  <td>P1v3</td>
-  <td>Windows</td>
-  <td><b>1,46</b></td>
-  <td>325</td>
-  <td>223</td>
-</tr>
-<tr>
-  <td>P3v3</td>
-  <td>Windows</td>
-  <td><b>1,4</b></td>
-  <td>1250</td>
-  <td>894</td>
-</tr>
-<tr>
-  <td>P2v2</td>
-  <td>Windows</td>
-  <td><b>1,23</b></td>
-  <td>325</td>
-  <td>264</td>
-</tr>
-<tr>
-  <td>S3</td>
-  <td>Windows</td>
-  <td><b>1,23</b></td>
-  <td>325</td>
-  <td>264</td>
-</tr>
-<tr>
-  <td>S3</td>
-  <td>Linux</td>
-  <td><b>0,8</b></td>
-  <td>200</td>
-  <td>251</td>
-</tr>
-<tr>
-  <td>S2</td>
-  <td>Windows</td>
-  <td><b>0,76</b></td>
-  <td>100</td>
-  <td>132</td>
-</tr>
-<tr>
-  <td>P1v2</td>
-  <td>Linux</td>
-  <td><b>0,66</b></td>
-  <td>50</td>
-  <td>76</td>
-</tr>
-<tr>
-  <td>P1v2</td>
-  <td>Windows</td>
-  <td><b>0,53</b></td>
-  <td>70</td>
-  <td>132</td>
-</tr>
-<tr>
-  <td>S2</td>
-  <td>Linux</td>
-  <td><b>0,4</b></td>
-  <td>50</td>
-  <td>126</td>
-</tr>
-<tr>
-  <td>S1</td>
-  <td>Linux</td>
-  <td><b>0,16</b></td>
-  <td>10</td>
-  <td>63</td>
-</tr>
-<tr>
-  <td>S1</td>
-  <td>Windows</td>
-  <td><b>0,15</b></td>
-  <td>10</td>
-  <td>66</td>
-</tr>
-
+  <th colspan="5"><font size="+1">Tier efficiency</font></th>
+  <tr><td><b>Tier</b></td><td><b>OS</b></td><td><b>Cost efficiency index</b></td><td><b>Maximum req/s for Good Performance</b></td><td><b>Cost per month</b></td></tr>
+  <tr><td>P2v3</td><td>Linux</td><td><b>3,19 (best)</b></td><td>750</td><td>235</td></tr>
+  <tr><td>P1v3</td><td>Linux</td><td><b>2,12</b></td><td>250</td><td>118</td></tr>
+  <tr><td>P2v3</td><td>Windows</td><td><b>2,01</b></td><td>900</td><td>447</td></tr>
+  <tr><td>P3v2</td><td>Linux</td><td><b>1,97</b></td><td>600</td><td>305</td></tr>
+  <tr><td>P3v3</td><td>Linux</td><td><b>1,91</b></td><td>900</td><td>471</td></tr>
+  <tr><td>P2v2</td><td>Linux</td><td><b>1,64</b></td><td>250</td><td>152</td></tr>
+  <tr><td>P3v2</td><td>Windows</td><td><b>1,51</b></td><td>800</td><td>529</td></tr>
+  <tr><td>P1v3</td><td>Windows</td><td><b>1,46</b></td><td>325</td><td>223</td></tr>
+  <tr><td>P3v3</td><td>Windows</td><td><b>1,4</b></td><td>1250</td><td>894</td></tr>
+  <tr><td>P2v2</td><td>Windows</td><td><b>1,23</b></td><td>325</td><td>264</td></tr>
+  <tr><td>S3</td><td>Windows</td><td><b>1,23</b></td><td>325</td><td>264</td></tr>
+  <tr><td>S3</td><td>Linux</td><td><b>0,8</b></td><td>200</td><td>251</td></tr>
+  <tr><td>S2</td><td>Windows</td><td><b>0,76</b></td><td>100</td><td>132</td></tr>
+  <tr><td>P1v2</td><td>Linux</td><td><b>0,66</b></td><td>50</td><td>76</td></tr>
+  <tr><td>P1v2</td><td>Windows</td><td><b>0,53</b></td><td>70</td><td>132</td></tr>
+  <tr><td>S2</td><td>Linux</td><td><b>0,4</b></td><td>50</td><td>126</td></tr>
+  <tr><td>S1</td><td>Linux</td><td><b>0,16</b></td><td>10</td><td>63</td></tr>
+  <tr><td>S1</td><td>Windows</td><td><b>0,15</b></td><td>10</td><td>66</td></tr>
 </table>
+
 {% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
