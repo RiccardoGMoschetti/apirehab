@@ -1,7 +1,8 @@
 ---
 layout: default
-title: Azure Functions Performance
-nav_order: 2
+title: .NET workloads on Azure Functions
+nav_order: 1
+parent: Azure Functions
 comments: true
 ---
 # Performance of Azure Functions with .NET workloads
