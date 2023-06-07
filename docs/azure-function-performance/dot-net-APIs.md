@@ -1,6 +1,6 @@
 ---
 layout: default
-title: .NET workloads on Azure Functions
+title: .NET workloads
 nav_order: 1
 parent: Azure Functions
 comments: true
