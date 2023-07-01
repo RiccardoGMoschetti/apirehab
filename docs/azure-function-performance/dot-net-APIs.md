@@ -48,7 +48,7 @@ We categorized the performance as follows:
 
 - <span style="color:darkGreen; font-weight:bold">Good</span> performance: In this category, 95% of API calls are completed in less than 100ms, indicating that only 5%  of API calls may experience unsatisfactory response times.
 - <span style="color:darkOrange; font-weight:bold">Mediocre</span>: Here, 95% of API calls are completed in less than 1 second, indicating that a  portion of API calls may be downright slow.
-- <span style="color:darkRed; font-weight:bold">Barely working</span>: Although the server remains functional, each call may take up to 30 seconds to complete.
+- <span style="color:darkRed; font-weight:bold">Any Performance</span>: Although the server remains functional, each call may take up to 30 seconds to complete.
 
 It is important to note that we did not include the B-tier app functions in this test, as Microsoft does not categorize them as production-ready.
 
@@ -61,7 +61,7 @@ It is important to note that we did not include the B-tier app functions in this
 
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
-   <tr><td>Tier</td><td><span style="color:darkGreen;font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange;font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed;font-weight:bold">Barely working</span></td></tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen;font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange;font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed;font-weight:bold">Any performance</span></td></tr>
    <tr><td>&nbsp;</td><td>95th perc. &lt; 100ms</td><td>95th perc. &lt; 1000ms</td><td>(any 95th perc)</td></tr>
    <tr><td>Linux <em>S1</em></td><td>10</td><td>30</td><td>50</td></tr>
    <tr><td>Linux <em>S2</em></td><td>50</td><td>100</td><td>150</td></tr>
@@ -72,7 +72,7 @@ It is important to note that we did not include the B-tier app functions in this
 
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
-   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Any performance</span></td></tr>
    <tr><td>&nbsp;</td><td>95th perc. &lt; 100ms</td><td>95th perc. &lt; 1000ms</td><td>(any 95th perc)</td></tr>
    <tr><td>Windows <em>S1</em></td><td>10</td><td>50</td><td>70</td></tr>
    <tr><td>Windows <em>S2</em></td><td>100</td><td>150</td><td>175</td></tr>
@@ -100,7 +100,7 @@ These tiers represent the second generation of "premium" app services. They offe
 
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
-   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Any performance</span></td></tr>
    <tr><td>&nbsp;</td><td>95th perc. < 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
    <tr><td>Linux <em>P1v2</em></td><td>50</td><td>75</td><td>150</td></tr>
    <tr><td>Linux <em>P2v2</em></td><td>250</td><td>350</td><td>400</td></tr>
@@ -110,7 +110,7 @@ These tiers represent the second generation of "premium" app services. They offe
 ### Windows tiers
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
-   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Any performance</span></td></tr>
    <tr><td>&nbsp;</td><td>95th perc. &lt; 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
    <tr><td>Windows <em>P1v2</em></td><td>70</td><td>175</td><td>200</td></tr>
    <tr><td>Windows <em>P2v2</em></td><td>325</td><td>475</td><td>475</td></tr>
@@ -137,7 +137,7 @@ They offer superior performance compared to the v2 counterparts and allow for lo
 
 <table>
    <th colspan="4"> <font size="+1">Maximum requests per second</font></th>
-   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Any performance</span></td></tr>
    <tr><td>&nbsp;</td><td>95th perc. < 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
    <tr><td>Linux <em>P1v3</em></td><td>250</td><td>350</td><td>300</td></tr>
    <tr><td>Linux <em>P2v3</em></td><td>250</td><td>350</td><td>400</td></tr>
@@ -148,7 +148,7 @@ They offer superior performance compared to the v2 counterparts and allow for lo
 
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
-   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Bad Performance</span></td></tr>
+   <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Any performance</span></td></tr>
    <tr><td>&nbsp;</td><td>95th perc. &lt; 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
    <tr><td>Windows <em>P1v3</em></td><td>325</td><td>425</td><td>450</td></tr>
    <tr><td>Windows <em>P2v3</em></td><td>900</td><td>1000</td><td>1050</td></tr>
@@ -177,6 +177,9 @@ The *cost efficiency* index we present below represents the relationship between
 For example, if there is a requirement for 1000 requests per second, it is more advantageous to opt for 4  P1v3 Linux tiers, each capable of serving 250 requests per second and resulting in a monthly cost of 472 euros (118 euros per tier x 4), instead of selecting a single P3v3 tier, which can handle up to 1250 requests per second but incurs a monthly cost of 894 euros.  
 
 Additionally, it is generally advisable to utilize multiple smaller instances rather than a single larger instance. This approach mitigates the impact of instance failures, as a single large instance would render the entire application unavailable until it becomes operational again, whereas several smaller instances ensure the availability of the other instances during the downtime of a faulty instance.
+
+[Here](x64-vs-x86-vs-ahead-of-time-functions.md) you will find additional tests with regards to 32 bits vs 64, self-contained vs framework dependant, ready-to-run options.
+
 <table>
   <th colspan="5"><font size="+1">Tier efficiency</font></th>
   <tr><td><b>Tier</b></td><td><b>OS</b></td><td><b>Cost efficiency index</b></td><td><b>Maximum req/s for Good Performance</b></td><td><b>Cost per month</b></td></tr>
