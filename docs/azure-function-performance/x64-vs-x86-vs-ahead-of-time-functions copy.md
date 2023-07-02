@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 32bits vs 64 vs ready to run
-nav_order: 1
+nav_order: 2
 parent: Azure Functions
 comments: true
 ---
@@ -19,10 +19,10 @@ _This is where you choose 64bits vs 32bits in the portal, blade "Configuration".
 
 
 _These are the deployment options if you deploy from Visual Studio_
-![Alt text](../images/deployment-option.png)
+![Deployment options](../images/deployment-option.png)
 
 _The ready-to-run option_
-![Alt text](../images/ready-to-run-publish-option.png)
+![Ready to run](../images/ready-to-run-publish-option.png)
 
 In conducting these tests, we employed the identical methodology utilized in the main tests (refer to the [azure-functions.md](./azure-functions.md) document) and summarized it as follows:
 - Deploying straightforward APIs responsible for retrieving random data from a Redis Cache.
