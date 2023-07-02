@@ -11,13 +11,20 @@ Building upon the findings regarding the comparison between Linux and Windows Az
 
 - Does performance improve if I utilize the x86 (32-bit) or x64 (64-bit) frameworks?
 - Is compilation dependent on a specific framework better than a portable compilation approach?
-- Is Azure's ahead-of-time-flavor compilation, referred to as "ready to run" ([here](https://github.com/Azure/azure-functions-host/issues/5876) is a description)), a favorable choice?
+- Is Azure's ahead-of-time-flavor compilation, referred to as "ready to run" ([here](https://github.com/Azure/azure-functions-host/issues/5876) is a description), a favorable choice? 
+  
+_This is where you choose 64bits vs 32bits in the portal._
+![64 vs 32 bits](../images/NetFunctions-x64-vs-x86.png)
+
+
+_This is where you choose the performance-
 
 In conducting these tests, we employed the identical methodology utilized in the main tests (refer to the [azure-functions.md](./azure-functions.md) document) and summarized it as follows:
 - Deploying straightforward APIs responsible for retrieving random data from a Redis Cache.
 - Assessing performance using a VM equipped with vegeta within the same virtual network as the rest of the infrastructure.
 
-In this specific test, our focus was directed towards the P2v3 tier, which appears to be the most optimal choice for...
+{: .important }
+>   For this particular test, our attention was directed towards the P2v3 tier, which demonstrates a highly favorable performance-to-cost ratio, making it an excellent choice for most use cases.
 
 # Results
 ## Windows
