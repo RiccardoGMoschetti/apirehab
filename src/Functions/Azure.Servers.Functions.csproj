@@ -6,11 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	 <UserSecretsId>ApiRehabUserSecrets</UserSecretsId>
-
   </PropertyGroup>
-	<PropertyGroup>
-		<PublishReadyToRun>true</PublishReadyToRun>
-	</PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Properties\ServiceDependencies\**" />
     <EmbeddedResource Remove="Properties\ServiceDependencies\**" />
