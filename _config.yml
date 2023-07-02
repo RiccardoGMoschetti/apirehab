@@ -11,6 +11,6 @@ aux_links:
   Template Repository: https://github.com/RiccardoGMoschetti/apirehab
 
 callouts:
- warning:
+ important:
     title: 
     color: blue

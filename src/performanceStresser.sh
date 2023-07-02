@@ -11,7 +11,7 @@ tenant_id="{your tenant id}"
 resource_group="{your resource group}"
 app_plan="{your app plan}"
 function="{name of your function}"
-api_to_call="JustWait?waitMS=2000"
+api_to_call="GetFromCache"
 
 output_file_prefix="{output file prefix}"
 duration="600s"
