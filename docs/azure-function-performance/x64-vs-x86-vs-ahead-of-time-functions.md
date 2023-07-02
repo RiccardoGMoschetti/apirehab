@@ -29,7 +29,7 @@ In conducting these tests, we employed the identical methodology utilized in the
 - Assessing performance using a VM equipped with vegeta within the same virtual network as the rest of the infrastructure.
 
 {: .important }
->   For this particular test, our attention was directed towards the P2v3 tier, which demonstrates a highly favorable performance-to-cost ratio, making it an excellent choice for most use cases.
+> For this particular test, our attention was directed towards the P2v3 tier, which demonstrates a highly favorable performance-to-cost ratio, making it an excellent choice for most use cases.
 
 # Results
 ## Windows
