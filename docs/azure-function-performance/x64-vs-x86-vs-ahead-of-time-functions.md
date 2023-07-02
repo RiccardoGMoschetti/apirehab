@@ -14,7 +14,7 @@ Building upon the findings regarding the comparison between Linux and Windows Az
   
 - Is Azure's ahead-of-time-flavor compilation, referred to as "ready to run" ([here](https://github.com/Azure/azure-functions-host/issues/5876) is a description), a favorable choice? 
   
-_This is where you choose 64bits vs 32bits in the portal._
+_This is where you choose 64bits vs 32bits in the portal, blade "Configuration"._
 ![64 vs 32 bits](../images/NetFunctions-x64-vs-x86.png)
 
 
