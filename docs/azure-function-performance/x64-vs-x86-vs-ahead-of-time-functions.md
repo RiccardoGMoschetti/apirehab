@@ -10,14 +10,19 @@ comments: true
 Building upon the findings regarding the comparison between Linux and Windows Azure Functions, we extended our testing to address these common inquiries:
 
 - Does performance improve if I utilize the x86 (32-bit) or x64 (64-bit) frameworks?
-- Is compilation dependent on a specific framework better than a portable compilation approach?
+- Is deployment dependent on a specific framework better self-contained?
+  
 - Is Azure's ahead-of-time-flavor compilation, referred to as "ready to run" ([here](https://github.com/Azure/azure-functions-host/issues/5876) is a description), a favorable choice? 
   
 _This is where you choose 64bits vs 32bits in the portal._
 ![64 vs 32 bits](../images/NetFunctions-x64-vs-x86.png)
 
 
-_This is where you choose the performance-
+_These are the deployment options if you deploy from Visual Studio_
+![Alt text](../images/deployment-option.png)
+
+_The ready-to-run option_
+![Alt text](../images/ready-to-run-publish-option.png)
 
 In conducting these tests, we employed the identical methodology utilized in the main tests (refer to the [azure-functions.md](./azure-functions.md) document) and summarized it as follows:
 - Deploying straightforward APIs responsible for retrieving random data from a Redis Cache.
@@ -36,7 +41,7 @@ The following observations can be gleaned from the tables provided:
 
 - The performance of the 32-bit (x86) and 64-bit (x64) frameworks is highly comparable,
 
-- The choice between self-contained and framework-dependent compilations appears to have no significant impact on performance.
+- The choice between self-contained and framework-dependent deployment options appears to have no significant impact on performance.
 
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
