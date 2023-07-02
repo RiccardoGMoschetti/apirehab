@@ -1,31 +1,35 @@
 ---
 layout: default
-title: .NET workloads - more variations
+title: 32bits vs 64 vs ready to run
 nav_order: 1
 parent: Azure Functions
 comments: true
 ---
 # Performance of Azure Functions with .NET workloads: the case of 64 bits vs 32 bits, ahead-of-time compilation, and self-contained vs framework-dependant binaries
 
-Building on the findings regarding the comparison of Linux and Windows Azure Functions, we extended our test to answer these common questions:
-- is performance better if I use x86 (32 bits) or x64 (64 bits) frameworks?
-- is framework-dependant compilation better than portable 
-- is Azure's ahead-of-time-flavor compilation (named _ready to run_; [here](https://github.com/Azure/azure-functions-host/issues/5876) is a description) a good choice?
+Building upon the findings regarding the comparison between Linux and Windows Azure Functions, we extended our testing to address these common inquiries:
 
-For these tests, we used the same methodology as with the [main tests](./azure-functions.md) which can be summarized as such:
-- we deployed simple APIs that retrieve random data from a Redis Cache
-- we tested the performance a vegeta-equipped VM in the same virtual network as the rest of the infrastructure
+- Does performance improve if I utilize the x86 (32-bit) or x64 (64-bit) frameworks?
+- Is compilation dependent on a specific framework better than a portable compilation approach?
+- Is Azure's ahead-of-time-flavor compilation, referred to as "ready to run" ([here](https://github.com/Azure/azure-functions-host/issues/5876) is a description)), a favorable choice?
 
-For this particular test, we focused on the P2v3 tier, which seems to be the best option for wo
+In conducting these tests, we employed the identical methodology utilized in the main tests (refer to the [azure-functions.md](./azure-functions.md) document) and summarized it as follows:
+- Deploying straightforward APIs responsible for retrieving random data from a Redis Cache.
+- Assessing performance using a VM equipped with vegeta within the same virtual network as the rest of the infrastructure.
+
+In this specific test, our focus was directed towards the P2v3 tier, which appears to be the most optimal choice for...
 
 # Results
 ## Windows
 
-As you can see from the tables below, these findings are evident:
 
-- the ahead of time compilation option (ready to run) does not improve performance (however, this does not account for boot time, which we didn't measure as we give for granted it must be better)
-- 32 bits and 64 bits are very comparable; possibly, x65
-- self-contained and framework-dependant compilations are indifferent for performance
+The following observations can be gleaned from the tables provided:
+
+- The implementation of the ahead-of-time compilation option (known as "ready to run") does not enhance performance. However, it should be noted that these findings do not consider boot time, which was not measured but is assumed to be better.
+
+- The performance of the 32-bit (x86) and 64-bit (x64) frameworks is highly comparable,
+
+- The choice between self-contained and framework-dependent compilations appears to have no significant impact on performance.
 
 <table>
    <th colspan="4"><font size="+1">Maximum requests per second</font></th>
@@ -37,7 +41,6 @@ As you can see from the tables below, these findings are evident:
       <tr><td>Windows P2v3 <em>32 bits framework-dependant</em></td><td>800</td><td>1050</td><td>1050</td></tr>
    <tr><td>Windows P2v3 <em>32 bits self-contained</em></td><td>800</td><td>975</td><td>975</td></tr>
 </table>
-
 
 
 {% if page.comments %}
