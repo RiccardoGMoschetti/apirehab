@@ -5,6 +5,7 @@ theme: just-the-docs
 url: https://RiccardoGMoschetti.github.io/apirehabù
 
 logo: /docs/images/logo.png
+favicon_ico: "/docs/images/favicon.ico"
 
 aux_links:
   Template Repository: https://github.com/RiccardoGMoschetti/apirehab
