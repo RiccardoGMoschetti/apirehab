@@ -48,7 +48,7 @@ The following observations can be gleaned from the tables provided:
    <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Any Performance</span></td></tr>
    <tr><td>&nbsp;</td><td>95th perc. < 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
    <tr><td>Windows P2v3 <em>Ready to Run</em></td><td>800  </td><td>875</td><td>950</td></tr>
-   <tr><td>Windows P2v3 <em>64 bits framework-dependant</em></td><td>825</td><td>1000</td><td>1000</td></tr>
+   <tr><td>Windows P2v3 <em>64 bits framework-dependant</em></td><td>800</td><td>1000</td><td>1000</td></tr>
    <tr><td>Windows P2v3 <em>64 bits self-contained</em></td><td>800</td><td>1050</td><td>1050</td></tr>
       <tr><td>Windows P2v3 <em>32 bits framework-dependant</em></td><td>800</td><td>1050</td><td>1050</td></tr>
    <tr><td>Windows P2v3 <em>32 bits self-contained</em></td><td>800</td><td>975</td><td>975</td></tr>
