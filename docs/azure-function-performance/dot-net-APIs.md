@@ -39,7 +39,7 @@ The client machine responsible for generating the load was an Ubuntu 22.04 VM wi
 
 ## The infrastructure / architecture 
 Our testing encompassed most production-ready Azure Function tiers available in the West Europe region, covering both Linux and Windows operating systems. The Azure functions were hosted in the same data center and virtual network as the VMs and the Redis Cache, utilizing private endpoints to ensure minimal network latency. The provided architectural diagram illustrates the solution's structure. 
-<img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png?raw=true"/>.  
+<img src="https://github.com/RiccardoGMoschetti/apirehab/blob/dd723e412665ea3b43f35d68fc12c2b7089a2063/docs/images/Architecture-API-DotNet-On-Azure-Functions.drawio.png?raw=true" alt="the architecture"/>.  
 You can obtain the original diagrams.net (formerly draw.io) drawing <a href="/docs/drawio/Architecture-API-DotNet-On-Azure-Functions.drawio" download>from this location</a>.
 
 ## Data from Vegeta
@@ -90,7 +90,8 @@ As of May 2023, the following are the monthly prices for the different tiers and
 | *S2* |  2 | 3.50 |    50 |   126 |   132 |
 | *S3* |  4 | 7.50 |    50 |   251 |   264 |
          
-From the above information, it can be inferred that Windows workloads in the S* tier provide higher request capacities than Linux, albeit at a slightly higher price. Therefore, unless there are specific reasons to opt for Linux functions with .NET workloads, Windows S* tiers seem to be preferable to Linux S* tiers.
+{: .important }
+> From the above information, it can be inferred that Windows workloads in the S* tier provide higher request capacities than Linux, albeit at a slightly higher price. Therefore, unless there are specific reasons to opt for Linux functions with .NET workloads, Windows S* tiers seem to be preferable to Linux S* tiers.
 
 ## "P*v2" tiers
 
@@ -151,8 +152,8 @@ They offer superior performance compared to the v2 counterparts and allow for lo
    <tr><td>Tier</td><td><span style="color:darkGreen; font-weight:bold">Good Performance</span></td><td><span style="color:darkOrange; font-weight:bold">Mediocre Performance</span></td><td><span style="color:darkRed; font-weight:bold">Any performance</span></td></tr>
    <tr><td>&nbsp;</td><td>95th perc. &lt; 100ms</td><td>95th perc. < 1000ms</td><td>(any 95th perc)</td></tr>
    <tr><td>Windows <em>P1v3</em></td><td>325</td><td>425</td><td>450</td></tr>
-   <tr><td>Windows <em>P2v3</em></td><td>900</td><td>1000</td><td>1050</td></tr>
-   <tr><td>Windows <em>P3v2</em></td><td>1250</td><td>1250</td><td>1250</td></tr>
+   <tr><td>Windows <em>P2v3</em></td><td>825</td><td>1000</td><td>1050</td></tr>
+   <tr><td>Windows <em>P3v3</em></td><td>1250</td><td>1250</td><td>1250</td></tr>
 </table>
 
 ## Prices for P\*v3 tiers
@@ -170,7 +171,8 @@ If there is a need to accommodate a substantial volume of requests and there is 
 <a id="finalConsiderations"></a>
 # Final considerations
 
-Although Windows tiers demonstrate superior performance compared to Linux tiers, the latter exhibit a more favorable cost-effectiveness ratio.
+{: .important }
+> Although Windows tiers demonstrate superior performance compared to Linux tiers, the latter exhibit a more favorable cost-effectiveness ratio.
 
 The *cost efficiency* index we present below represents the relationship between the maximum number of requests per second (ensuring a response time within the 95th percentile of less than 100 ms) and the monthly cost (not considering **reservations**, or long-term commitment discounts). A higher cost efficiency implies greater value for the investment.  
 
@@ -204,6 +206,7 @@ Additionally, it is generally advisable to utilize multiple smaller instances ra
 </table>
 
 {% if page.comments %}
+
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {

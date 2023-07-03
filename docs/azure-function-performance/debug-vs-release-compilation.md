@@ -15,7 +15,6 @@ _The Dreaded Debug Compilation_
 
 First, let us try to understand the differences between the _debug_ and _release_ modes. A comprehensive answer to this question can be found on <a href="https://stackoverflow.com/questions/367884/what-is-the-difference-between-debug-and-release-in-visual-studio/" target="_blank">Stack Overflow</a>. In debug mode, debug information is added to the compiled package, including the PDB files, and fewer optimizations are performed.
 
-#Results
 ## Windows
 
 {: .important }
