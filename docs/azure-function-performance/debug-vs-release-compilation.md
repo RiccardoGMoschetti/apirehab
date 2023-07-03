@@ -18,7 +18,7 @@ First, let us try to understand the differences between the _debug_ and _release
 ## Windows
 
 {: .important }
-> Don't send the resignation letter just yet: performance-wise, there is litte difference with Azure Functions (especially the Wndows flavor). Other factors will make it hardly relevant.
+> Don't send the resignation letter just yet: performance-wise, there is litte difference with Azure Functions (especially the Windows flavor). Other factors will make it hardly relevant.
 
 
 ## Windows
