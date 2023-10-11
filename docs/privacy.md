@@ -1,7 +1,7 @@
 ---
 layout: defwithcookiepolicy
 title: Cookie Policy
-nav_order: 1
+nav_order: 3
 has_children: false
 permalink: /docs/privacy
 ---
