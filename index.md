@@ -15,7 +15,7 @@ This website aims to provide you with relevant data to facilitate decision-makin
 - Prevalent pitfalls encountered while striving for peak API performance.
 
 {: .important }
-> While our primary emphasis has been on Microsoft Cloud technology, encompassing .NET and Azure, we also offer captivating comparative tests involving diverse cloud providers and frameworks.
+> While our primary emphasis has been on Microsoft Cloud technology, encompassing .NET and Azure, we will also offer captivating comparative tests involving diverse cloud providers and frameworks.
 
 Embark on your exploration with delight!  
 Some insights:  
