@@ -1,6 +1,6 @@
 ---
 title: Home
-layout: home
+layout: defwithcookiepolicy
 nav_order: 1
 ---
 # How many requests will my API support? 
