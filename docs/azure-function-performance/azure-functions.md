@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: defwithcookiepolicy
 title: Azure Functions
 nav_order: 2
 has_children: true
