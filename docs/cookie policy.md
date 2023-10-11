@@ -8,4 +8,4 @@ permalink: /docs/privacy
 #Cookie list
 At the time or writing, this websites uses no cookies.
 
-However, github (which hosts the "pages" functionality which powers this site) uses <a href="https://github.com/privacy/cookies">these ones.</a>
+However, github (which hosts the "pages" functionality which powers this site) uses <a href="https://github.com/privacy/cookies" target="_blank">these.</a>
