@@ -2,7 +2,7 @@
 layout: defwithcookiepolicy
 title: Cookie Policy
 nav_order: 1
-has_children: flse
+has_children: false
 permalink: /docs/privacy
 ---
 #Cookie list
