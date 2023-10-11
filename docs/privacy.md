@@ -1,10 +1,9 @@
 ---
 layout: defwithcookiepolicy
-title: Azure Functions
-nav_order: 2
-has_children: true
-permalink: /docs/ui-components
-has_toc: true
+title: Cookie Policy
+nav_order: 1
+has_children: flse
+permalink: /docs/privacy
 ---
 #Cookie list
 At the time or writing, this websites uses no cookies.
