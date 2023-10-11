@@ -22,4 +22,4 @@ Some insights:
 [linux vs windows functions](/docs/azure-function-performance/dot-net-APIs.md)  
 [debug vs release compilation performance](/docs/azure-function-performance/debug-vs-release-compilation.md)  
 
-
+{% include cookie-consent.html %}
