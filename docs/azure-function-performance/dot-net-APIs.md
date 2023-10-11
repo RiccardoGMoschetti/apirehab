@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: defwithcookiepolicy
 title: .NET workloads
 nav_order: 1
 parent: Azure Functions
