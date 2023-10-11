@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: defwithcookiepolicy
 title: debug vs release compilation
 nav_order: 3
 parent: Azure Functions
