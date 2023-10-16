@@ -22,7 +22,7 @@ To gain more insights into the outcomes across different operating systems and t
 ## Measurement Approach
 To evaluate performance, we deployed a .NET 7 isolated process API on most Azure Function tiers. This API was intentionally designed to perform very little work, as the objective was to assess infrastructure rather than code.  
 The tested API performs these steps:
-1. Retrieval of a random string (from a set of 100) from an Azure Redis Cache located in the same virtual network as the Azure Function.
+1. Retrieval of a random string (from a set of 100) from an Azure Redis Cache (a C2 tier) located in the same virtual network as the Azure Function.
 2. Creation of an in-memory object containing the retrieved string, a GUID, and another random string.
 3. Serialization of the object and generation of a response containing the serialized object.
 

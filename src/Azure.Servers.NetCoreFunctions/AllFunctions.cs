@@ -13,11 +13,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace APIRehab.Azure.Servers.Functions {
     public class AllFunctions {
-        private readonly TelemetryClient telemetryClient;
+
         private readonly ILogger _logger;
+        private static Random random = new Random();
         private readonly Task<RedisConnection> _redisConnectionFactory;
         private RedisConnection? _redisConnection;
-        private TelemetryClient _telemetryClient;
         private IConfiguration _configuration;
         public AllFunctions(ILoggerFactory loggerFactory, Task<RedisConnection> redisConnectionFactory, IConfiguration configuration) {
             _logger = loggerFactory.CreateLogger<AllFunctions>();
@@ -25,8 +25,7 @@ namespace APIRehab.Azure.Servers.Functions {
             _configuration = configuration;
     
         }
-
-        private static Random random = new Random();
+        
         private object MakePerson(string? fromCache=null) {
             return new {
                 id = Guid.NewGuid().ToString(),
@@ -76,21 +75,13 @@ namespace APIRehab.Azure.Servers.Functions {
 
             HttpResponseData responseData;
 
-            var telemetryConfiguration = TelemetryConfiguration.CreateDefault();
-          
-            telemetryConfiguration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
-            var dependencyTrackingModule = new DependencyTrackingTelemetryModule();
-            dependencyTrackingModule.Initialize(telemetryConfiguration);
-          
-            _telemetryClient = new TelemetryClient(telemetryConfiguration);
-            _telemetryClient.InstrumentationKey = "ed8e1974-7f5d-4faf-b879-5a58d945b7e5";
+            
             int waitMS;
             if (query.Count != 0 && query["waitMS"] != null && int.TryParse(query["waitMS"], out waitMS)) {
                 _logger.LogInformation("Now waiting...");
                 await Task.Delay(waitMS);
                 _logger.LogInformation("Wait is over!");
-                _telemetryClient.TrackDependency("Wait",$"Waiting {waitMS} milliseconds",DateTime.Now,TimeSpan.FromMicroseconds(waitMS),true);
-                string jsonToReturn = JsonConvert.SerializeObject(MakePerson());
+                 string jsonToReturn = JsonConvert.SerializeObject(MakePerson());
 
                 responseData = req.CreateResponse(HttpStatusCode.OK);
                 responseData.Headers.Add("Content-Type", "application/json; charset=utf-8");

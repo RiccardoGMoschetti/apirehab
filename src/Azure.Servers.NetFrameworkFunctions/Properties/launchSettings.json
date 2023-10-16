@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Azure.Servers.NetFrameworkFunctions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7082",
+      "launchBrowser": false
+    }
+  }
+}

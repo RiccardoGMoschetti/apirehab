@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33015.44
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Servers.Functions", "Functions\Azure.Servers.Functions.csproj", "{4B79D3C8-3A34-4BEA-AFD4-504790999861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Servers.NetCoreFunctions", "Azure.Servers.NetFrameworkFunctions\Azure.Servers.NetCoreFunctions.csproj", "{4B79D3C8-3A34-4BEA-AFD4-504790999861}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure", "Azure", "{03F4F9C4-CDB2-41DE-8948-830462392A23}"
 EndProject
@@ -12,8 +12,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{C4732B18-8FD4-4C77-B0A3-1DA4A1349F58}"
 	ProjectSection(SolutionItems) = preProject
 		performanceStresser.sh = performanceStresser.sh
-		Functions\Properties\PopulateRedis.txt = Functions\Properties\PopulateRedis.txt
+		Functions\PopulateRedis.txt = Functions\PopulateRedis.txt
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Servers.VM.Core", "Azure.Servers.VM.Core\Azure.Servers.VM.Core.csproj", "{A9ED3A74-BAD8-4BC3-9D18-982C9D52270E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Servers.NetCoreWebApp", "Azure.Servers.NetCoreWebApp\Azure.Servers.NetCoreWebApp.csproj", "{0631294F-85A9-4BF4-9DBB-5714F497A9F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Servers.NetFrameworkFunctions", "Azure.Servers.NetFrameworkFunctions\Azure.Servers.NetFrameworkFunctions.csproj", "{EE9AB91F-0592-4097-855C-E6832AFBEB21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +31,18 @@ Global
 		{4B79D3C8-3A34-4BEA-AFD4-504790999861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B79D3C8-3A34-4BEA-AFD4-504790999861}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B79D3C8-3A34-4BEA-AFD4-504790999861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9ED3A74-BAD8-4BC3-9D18-982C9D52270E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9ED3A74-BAD8-4BC3-9D18-982C9D52270E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9ED3A74-BAD8-4BC3-9D18-982C9D52270E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9ED3A74-BAD8-4BC3-9D18-982C9D52270E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0631294F-85A9-4BF4-9DBB-5714F497A9F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0631294F-85A9-4BF4-9DBB-5714F497A9F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0631294F-85A9-4BF4-9DBB-5714F497A9F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0631294F-85A9-4BF4-9DBB-5714F497A9F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE9AB91F-0592-4097-855C-E6832AFBEB21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9AB91F-0592-4097-855C-E6832AFBEB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9AB91F-0592-4097-855C-E6832AFBEB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9AB91F-0592-4097-855C-E6832AFBEB21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -33,6 +51,9 @@ Global
 		{4B79D3C8-3A34-4BEA-AFD4-504790999861} = {8E02CA62-6BE2-4752-98D8-87FA59C3DCAA}
 		{8E02CA62-6BE2-4752-98D8-87FA59C3DCAA} = {03F4F9C4-CDB2-41DE-8948-830462392A23}
 		{C4732B18-8FD4-4C77-B0A3-1DA4A1349F58} = {03F4F9C4-CDB2-41DE-8948-830462392A23}
+		{A9ED3A74-BAD8-4BC3-9D18-982C9D52270E} = {8E02CA62-6BE2-4752-98D8-87FA59C3DCAA}
+		{0631294F-85A9-4BF4-9DBB-5714F497A9F0} = {8E02CA62-6BE2-4752-98D8-87FA59C3DCAA}
+		{EE9AB91F-0592-4097-855C-E6832AFBEB21} = {8E02CA62-6BE2-4752-98D8-87FA59C3DCAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C91C6BD-3029-49A9-B3C4-64D9AC2DDBCF}
