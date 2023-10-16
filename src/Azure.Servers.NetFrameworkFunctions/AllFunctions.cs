@@ -36,7 +36,6 @@ namespace Azure.Servers.NetFrameworkFunctions
 
         }
 
-  
 
         [Function("GetFromCache")]
         public async Task<HttpResponseData> GetFromCache([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
