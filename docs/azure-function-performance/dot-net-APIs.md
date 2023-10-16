@@ -1,6 +1,6 @@
 ---
 layout: defwithcookiepolicy
-title: .NET workloads
+title: .NET core workloads
 nav_order: 1
 parent: Azure Functions
 comments: true
