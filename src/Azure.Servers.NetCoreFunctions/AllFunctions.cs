@@ -10,8 +10,13 @@ using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.Extensions.Configuration;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Cryptography.X509Certificates;
+using System.Reflection.PortableExecutable;
+using System.Security.Cryptography;
 
-namespace APIRehab.Azure.Servers.Functions {
+namespace APIRehab.Azure.Servers.NetCoreFunctions {
     public class AllFunctions {
 
         private readonly ILogger _logger;
@@ -25,7 +30,7 @@ namespace APIRehab.Azure.Servers.Functions {
             _configuration = configuration;
     
         }
-        
+                
         private object MakePerson(string? fromCache=null) {
             return new {
                 id = Guid.NewGuid().ToString(),
@@ -33,10 +38,49 @@ namespace APIRehab.Azure.Servers.Functions {
             };
         }
 
+
+        private async Task<bool> ValidateToken(string token, string publicKey, string expectedAudience)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            
+            try
+            {
+                RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+                rsa.ImportSubjectPublicKeyInfo(Convert.FromBase64String(publicKey), out _); 
+                var validationParameters = new TokenValidationParameters
+                {
+                    IssuerSigningKey = new RsaSecurityKey(rsa),
+                    ValidateAudience = true,
+                    ValidAudience = expectedAudience,
+                    ValidateIssuer = false,
+                    ValidateLifetime = false
+                };
+                return (await tokenHandler.ValidateTokenAsync(token, validationParameters)).IsValid;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error in validating token: {ex.Message}");
+                return false;
+            }
+        }
+
         [Function ("GetFromCache")]
-        public async Task<HttpResponseData> GetFromCache([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req) {
-            _redisConnection = await _redisConnectionFactory;
+        public async Task<HttpResponseData> GetFromCache([HttpTrigger(AuthorizationLevel.Anonymous, "get","post")] HttpRequestData req) {
+           
             _logger.LogInformation("Entered the GetFromCache API");
+
+            HttpHeadersCollection headers = req.Headers;
+            if (!headers.TryGetValues("Authorization", out IEnumerable<string>? jwtTokens))
+            {
+                return req.CreateResponse(HttpStatusCode.Unauthorized);
+            }
+            bool validationResult = await ValidateToken(jwtTokens.First().Replace("Bearer ",string.Empty), _configuration["JWTPublicKey"], _configuration["ExpectedAudience"]);
+            if (!validationResult)
+            {
+                return req.CreateResponse(HttpStatusCode.Unauthorized);
+            }
+
+            _redisConnection = await _redisConnectionFactory;
 
             var keyToRetrieve = "A"+(random.Next(100)+1).ToString();
             string jsonToReturn = string.Empty;
@@ -47,6 +91,7 @@ namespace APIRehab.Azure.Servers.Functions {
 
             catch (Exception ex) {
                 _logger.LogError($"Error in reading from cache: {ex.Message}");
+                return req.CreateResponse(HttpStatusCode.Gone);
             }
        
             var response = req.CreateResponse(HttpStatusCode.OK);

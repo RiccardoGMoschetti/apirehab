@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Configuration;
+using System.Runtime.Remoting.Messaging;
 
 namespace Azure.Servers.NetFrameworkFunctions
 {
@@ -35,13 +36,22 @@ namespace Azure.Servers.NetFrameworkFunctions
 
 
         }
-
-
+       
         [Function("GetFromCache")]
+ 
         public async Task<HttpResponseData> GetFromCache([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
-            _redisConnection = await _redisConnectionFactory;
+       
             _logger.LogInformation("Entered the GetFromCache API");
+            _redisConnection = await _redisConnectionFactory;
+            //get the token from the header
+            var headers = req.Headers;
+            if (!headers.TryGetValues("Authorization", out var jwtToken))
+            { 
+                return req.CreateResponse(HttpStatusCode.Unauthorized);
+            }
+          
+
 
             var keyToRetrieve = "A" + (random.Next(100) + 1).ToString();
             string jsonToReturn = string.Empty;
